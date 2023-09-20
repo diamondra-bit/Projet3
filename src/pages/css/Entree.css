@@ -1,0 +1,34 @@
+.container-inline{
+    display: flex;
+     justify-content: space-between;
+    width: 66em;
+    padding: 20px 0;
+   /* background-image:linear-gradient(to right,#1aa7ec,#4adede);*/
+    margin-top: 2.5em;
+    margin-left: -0.5em;
+}
+.inline-add{
+    display: flex;
+    justify-content: space-around;
+    width: 20em;
+}
+.icone-search{
+    width: 1.5em;
+    height: 1.5em;
+}
+.search-bar{
+    display: flex; 
+    padding:2px 18px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin-right: 4em;
+}
+input{
+    outline: none;
+    border: none;
+    background: none;
+}
+.link-button{
+ background-color: #053f5c;
+ padding: 20px;
+}
