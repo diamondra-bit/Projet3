@@ -18,9 +18,9 @@ create table entree (
 )
 /*Table Sorties*/
 create table sortie (
-    id_sortie INT(100) PRIMARY KEY,
+    id_sortie INT(100) AUTO_INCREMENT PRIMARY KEY,
+    id_ent INT(100) ,
     nom_sort VARCHAR(100),
-    nbr_sort VARCHAR(100),
     heure_sort VARCHAR(100),
     id VARCHAR(100)
 )

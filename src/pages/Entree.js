@@ -71,11 +71,12 @@ function Entree() {
        listMateriel();
      },[]);
   
+   
      /*Update*/
-     const handleUpdate=()=>{
-      axios.post("http://localhost:3002/insertSortie")
-      axios.put("http://localhost:3002/updateHeure",{heure_sort:currentDate2})
-      axios.put("http://localhost:3002/decrementer/${id}")
+     const handleUpdate=(idsel)=>{
+      axios.post(`http://localhost:3002/insertSortie/${idsel}`)
+      axios.put(`http://localhost:3002/updateHeure/${idsel}`,{heure_sort:currentDate2})
+      axios.put(`http://localhost:3002/decrementer/${idsel}`)
       .catch(err=>console.log(err))
       window.location.reload();
      }
@@ -132,6 +133,8 @@ function Entree() {
                   </div>
                 )}
               </div>
+
+              {/*Afficher les matériels entrés */}
             <table>
               <thead>
                 <th>Nom du matériel</th>
@@ -147,14 +150,14 @@ function Entree() {
               {
               list.map((val)=>(
                 val.nbr_ent>=1 &&(
-                  <tr>
+                  <tr >
                   <td>{val.nom_ent}</td>
                   <td>{val.nbr_ent}</td>     
                   <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                   <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                   <td>{val.name}</td>
                   <td>
-                    <button className='btn-sortir' onClick={handleUpdate}>Sortir</button>
+                    <button className='btn-sortir' onClick={()=>handleUpdate(val.id_ent)}>Sortir</button>
                   </td>
               </tr>
                 )
