@@ -16,3 +16,21 @@ create table entree (
     heure_ent VARCHAR(100),
     id VARCHAR(100)
 )
+/*Table Sorties*/
+create table sortie (
+    id_sortie INT(100) PRIMARY KEY,
+    nom_sort VARCHAR(100),
+    nbr_sort VARCHAR(100),
+    heure_sort VARCHAR(100),
+    id VARCHAR(100)
+)
+
+/*Transférer les données de la table entrées vers la table sortie*/
+insert into sortie(nom_sort,nbr_sort,heure_sort,id) 
+select nom_ent,nbr_ent,heure_ent,id from entree where id_ent=2;
+
+/*Historiques*/
+select * from entree limit 4;
+
+/*Inner join entre entrée et client*/
+select * from entree inner join client on client.id=entree.id;
