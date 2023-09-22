@@ -138,6 +138,9 @@ tr:nth-child(even){
     border-radius: 10px;
     text-transform: uppercase;
 }
+.btn-print{
+    margin-top: 1em;
+}
 .form-add{
     color: #011f2e;
     margin-left: 5em;

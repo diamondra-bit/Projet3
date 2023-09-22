@@ -22,6 +22,8 @@ create table sortie (
     id_ent INT(100) ,
     nom_sort VARCHAR(100),
     heure_sort VARCHAR(100),
+    moyen_transport VARCHAR(100),
+    responsable_de_sortie VARCHAR(100),
     id VARCHAR(100)
 )
 
@@ -34,3 +36,5 @@ select * from entree limit 4;
 
 /*Inner join entre entrée et client*/
 select * from entree inner join client on client.id=entree.id;
+
+update sortie set heure_sort=2 and id=41 where id_ent=12;

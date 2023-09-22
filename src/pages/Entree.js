@@ -10,9 +10,16 @@ import search from '../pages/images/search.svg'
 import add from '../pages/images/add.svg'
 
 function Entree() {
+
   const [nom,setNom]=useState("");
   const [nombre,setNombre]=useState(0);
   const [id,setId]=useState("");
+  
+  const [moyen,setMoyen]=useState("");
+  const[uid,setUid]=useState("");
+  const[transid,setTransid]=useState("");
+  const[transnom,setTransNom]=useState("");
+
   const navigate= useNavigate();
 
   const [currentDate,setCurrentDate]=useState(new Date());
@@ -20,66 +27,66 @@ function Entree() {
   const [currentDate2,setCurrentDate2]=useState(new Date());
 
   const [list,setList]=useState([]);
-  const [modal,setModal]=useState(false);
 
-     /*Recuperer la date actuelle*/
-     useEffect( ()=>{
-      const intervalId= setInterval(()=>{
-          setCurrentDate(new Date()); },1000);
-  
-          return ()=>{clearInterval(intervalId);}
-    },[] )
+  const [modal,setModal]=useState(false);
+  const [modal2,setModal2]=useState(false);
+
+      /*Recuperer la date d'entrée*/
+          useEffect( ()=>{
+            const intervalId= setInterval(()=>{
+              setCurrentDate(new Date()); },1000);
+          
+              return ()=>{clearInterval(intervalId);}
+          },[] )
 
       /*Recuperer la date de sortie*/
-      useEffect( ()=>{
-        const intervalId= setInterval(()=>{
-            setCurrentDate2(new Date()); },1000);
-    
-            return ()=>{clearInterval(intervalId);}
-      },[] )
+          useEffect( ()=>{
+            const intervalId= setInterval(()=>{
+              setCurrentDate2(new Date()); },1000);
+          
+              return ()=>{clearInterval(intervalId);}
+          },[] )
   
-    /*Insérer les matériaux*/
-      const handleSubmit= (event)=>{
-        axios.post("http://localhost:3002/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
-        .catch(err => console.log(err))
-        navigate('/Entree');
-        }
-      
-  
-  /*Modal*/
-  const toggleModal=()=>{
-    setModal(!modal);
-  }
-
-  /*Recuperer la date actuelle*/
-  useEffect( ()=>{
-    const intervalId= setInterval(()=>{
-        setCurrentDate(new Date()); },1000);
-
-        return ()=>{clearInterval(intervalId);}
-  },[] );
+      /*Insérer les matériaux*/
+          const handleSubmit= (event)=>{
+            axios.post("http://localhost:3002/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
+            .catch(err => console.log(err))
+            navigate('/Entree');
+          }
+     
+      /*Modal*/
+          const toggleModal=()=>{
+            setModal(!modal);
+          }
+          const toggleModal2=()=>{
+            setModal2(!modal);
+          }
 
      /*Afficher les matériaux*/
-     useEffect(()=>{
-      const listMateriel=()=>{
-        axios.get("http://localhost:3002/read")
-        .then((response)=>{
-          setList(response.data)
-        })
-        .catch (err => console.log(err))
-       };
-       listMateriel();
-     },[]);
-  
+        useEffect(()=>{
+          const listMateriel=()=>{
+            axios.get("http://localhost:3002/read")
+            .then((response)=>{
+              setList(response.data)
+            })
+            .catch (err => console.log(err))
+          };
+          listMateriel();
+        },[]);
+      
    
-     /*Update*/
-     const handleUpdate=(idsel)=>{
-      axios.post(`http://localhost:3002/insertSortie/${idsel}`)
-      axios.put(`http://localhost:3002/updateHeure/${idsel}`,{heure_sort:currentDate2})
-      axios.put(`http://localhost:3002/decrementer/${idsel}`)
-      .catch(err=>console.log(err))
-      window.location.reload();
-     }
+     /*Transférer données vers Sortie*/
+        const handleUpdate=(idsel)=>{
+          toggleModal2();
+          axios.post(`http://localhost:3002/insertSortie/${idsel}`)
+          axios.put(`http://localhost:3002/updateHeure/${idsel}`,{heure_sort:currentDate2})
+          axios.put(`http://localhost:3002/updateResponsable/${idsel}`,{uid:uid})
+          axios.put(`http://localhost:3002/updateMoyen/${idsel}`,{moyen:moyen})
+          axios.put(`http://localhost:3002/updateTransport/${idsel}`,{transid:transid})
+          axios.put(`http://localhost:3002/decrementer/${idsel}`)
+          .catch(err=>console.log(err))
+          window.location.reload();
+        }
 
   return (
     <>
@@ -89,6 +96,7 @@ function Entree() {
       <div>
             <Darkmode/>
 
+            {/*Section 1*/}
             <div className='container-inline'>
 
               <div className='inline-add'>
@@ -101,6 +109,7 @@ function Entree() {
               </div>
             </div>
 
+          {/*Table */}
             <div className='table-container'>
               <div  className='button-div'> 
                 <button to="/Ajouter" className='button-entree' onClick={toggleModal}><img src={add}/>Ajouter</button>
@@ -118,8 +127,9 @@ function Entree() {
                       <input type='text' onChange={(event)=>{setNom(event.target.value)}}/>
                       <label>Nombre </label>
                       <input type='number' onChange={(event)=>{setNombre(event.target.value)}}/>
-                      <label>Id utilisateur</label>
+                      <label>Numéro utilisateur</label>
                       <input type='number'  onChange={(event)=>{setId(event.target.value)}}/>
+                      
 
                       <div className='btn-div-modal'>
                       <button className='btn-modal' type='submit'>Ajouter</button>
@@ -157,7 +167,35 @@ function Entree() {
                   <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                   <td>{val.name}</td>
                   <td>
-                    <button className='btn-sortir' onClick={()=>handleUpdate(val.id_ent)}>Sortir</button>
+                    <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>
+
+                    {modal2 &&(
+                  <div className='modal'>
+                  <div className='overlay' onClick={toggleModal}></div>
+                  <div className='modal-content'>
+
+                  <div className='form-add'>
+                    <h2>Informations sur la sortie</h2>
+                    <form onSubmit={handleSubmit}>
+                      <label>Numéro du responsable de sortie</label>
+                      <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
+                      <label>Moyens de transport </label>
+                      <input type='text'  onChange={(event)=>{setMoyen(event.target.value)}}/>
+                      <label>Numéro du transporteur des matériels</label>
+                      <input type='text' onChange={(event)=>{setTransid(event.target.value)}}/>
+                      <label>Nom du transporteur des matériels</label>
+
+                      <div className='btn-div-modal'>
+                      <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent)}>Ajouter</button>
+                      <button className='btn-modal' onClick={toggleModal}>Fermer</button>
+                      </div>
+                     
+                      </form>
+                  </div>
+                  
+                  </div>
+                  </div>
+                )}
                   </td>
               </tr>
                 )
@@ -166,45 +204,7 @@ function Entree() {
               </tbody>
               </table>
             </div>
-       {/*   <p>{`${hours}:${mn}`}</p>
-<td>Diams</td>
-            <form onSubmit={handleSubmit}>
-              <label>Nom matériel</label>
-              <input type='text' onChange={(event)=>{setNom(event.target.value)}}/>
-              <label>Nombre </label>
-              <input type='number' onChange={(event)=>{setNombre(event.target.value)}}/>
-              <label>Id utilisateur</label>
-              <input type='number'  onChange={(event)=>{setId(event.target.value)}}/>
-
-              <button type='submit'>Ajouter</button>
-
-            </form>
-
-            <button  onClick={listMateriel}>Afficher</button>
-
-            <table>
-              <thead>
-                <th>Nom</th>
-                <th>Nombre</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Utilisateur</th>
-              </thead>
-
-              <tbody>
-         
-              {
-              list.map((val,key)=>(
-              <tr>
-                  <td>{val.nom_ent}</td>
-                  <td>{val.nbr_ent}</td>     
-                  <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
-                  <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
-                  <td>{val.id}</td>
-              </tr>
-        ))}
-              </tbody>
-            </table>*/}
+    
       </div>
     </div>
     </>
