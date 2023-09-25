@@ -23,7 +23,8 @@ create table sortie (
     nom_sort VARCHAR(100),
     heure_sort VARCHAR(100),
     moyen_transport VARCHAR(100),
-    responsable_de_sortie VARCHAR(100),
+    responsable_id VARCHAR(100),
+   responsable_nom VARCHAR(100),
     id VARCHAR(100)
 )
 

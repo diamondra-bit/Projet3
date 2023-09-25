@@ -11,6 +11,8 @@ import {format} from 'date-fns'
 
 function Home() {
   const [list,setList]=useState([]);
+  const [list2,setList2]=useState([]);
+
 
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
@@ -23,6 +25,19 @@ function Home() {
     };
     listEntree();
   },[])
+
+  /*Afficher l'historique des entrées de matériaux*/
+  useEffect(()=>{
+    const listSortie=()=>{
+      axios.get("http://localhost:3002/readHistorySortie")
+      .then((response)=>{
+        setList2(response.data)
+      })
+      .catch(err=>(console.log(err)))
+    };
+    listSortie();
+  },[])
+
   return (
     <>
     <div className='container-home'>
@@ -79,7 +94,16 @@ function Home() {
                   
               </div>
               <div className='card3'>
-               
+              <h2 className='history-title-entry'>Sorties effectuées récemment</h2>
+              {
+              list2.map((val,key)=>(
+                <div className='history-entree'>  
+                  <div className='history-nom'>{val.nom_sort}</div>     
+                  <div className='history-date'>{format(new Date(val.heure_sort),'dd-MM-yyyy')}</div>
+                  < div className='history-nom'>{format(new Date(val.heure_sort),'HH:mm')}</div>
+                </div>
+                          
+        ))}
               </div>
             </div>
       </div>

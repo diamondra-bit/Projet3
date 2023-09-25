@@ -89,7 +89,7 @@ tbody{
     background-color: var(--tbody);
 }
 td{
-    padding: 15px;
+    padding: 15px 5px;
     color:var(--td);
     text-align: left;
     padding-left: 3em;

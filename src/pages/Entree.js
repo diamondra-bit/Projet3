@@ -18,15 +18,12 @@ function Entree() {
   const [moyen,setMoyen]=useState("");
   const[uid,setUid]=useState("");
   const[transid,setTransid]=useState("");
-  const[transnom,setTransNom]=useState("");
 
   const navigate= useNavigate();
 
   const [currentDate,setCurrentDate]=useState(new Date());
 
   const [currentDate2,setCurrentDate2]=useState(new Date());
-
-  const [list,setList]=useState([]);
 
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
@@ -63,6 +60,8 @@ function Entree() {
           }
 
      /*Afficher les matériaux*/
+     const [list,setList]=useState([]);
+
         useEffect(()=>{
           const listMateriel=()=>{
             axios.get("http://localhost:3002/read")
@@ -83,10 +82,31 @@ function Entree() {
           axios.put(`http://localhost:3002/updateResponsable/${idsel}`,{uid:uid})
           axios.put(`http://localhost:3002/updateMoyen/${idsel}`,{moyen:moyen})
           axios.put(`http://localhost:3002/updateTransport/${idsel}`,{transid:transid})
+          axios.put(`http://localhost:3002/updateNom/${idsel}`,{transid:transid})
           axios.put(`http://localhost:3002/decrementer/${idsel}`)
           .catch(err=>console.log(err))
-          window.location.reload();
+          navigate('/Sortie');
         }
+
+          /*Search*/
+          const [searchList,setSearchList]=useState([])
+
+            const handleSearch=()=>{
+              alert("search")
+              axios.get("http://localhost:3002/searchEntree")
+              .then((response)=>{
+                setSearchList(response.data)
+              })
+              .catch(err=>console.log(err))
+            };
+        
+            const[search,setSearch]=useState(false);
+
+            const toggleSearch=()=>{
+              setSearch(!search);
+              alert(search)
+            }
+      
 
   return (
     <>
@@ -103,9 +123,10 @@ function Entree() {
                 <div className='title-material'>Liste des <span><h2 className='title-material-span' >Matériels</h2></span></div>
               </div>
 
+            {/*Barre de recherche*/}
               <div className='search-bar'>
                <div> <input type='text' placeholder=''/></div> 
-               <div><img src={search} className='icone-search'/></div>
+               <button onClick={toggleSearch}><img src={search} className='icone-search'/> </button>
               </div>
             </div>
 
@@ -156,8 +177,11 @@ function Entree() {
               </thead>
              
               <tbody>
-           {/*Afficher les élement de la table */}
+{
+
+}
               {
+
               list.map((val)=>(
                 val.nbr_ent>=1 &&(
                   <tr >
@@ -169,10 +193,11 @@ function Entree() {
                   <td>
                     <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>
 
+             {/*Modal Sortie*/}
                     {modal2 &&(
                   <div className='modal'>
                   <div className='overlay' onClick={toggleModal}></div>
-                  <div className='modal-content'>
+                  <div className='modal-content modal-content2'>
 
                   <div className='form-add'>
                     <h2>Informations sur la sortie</h2>
@@ -183,10 +208,9 @@ function Entree() {
                       <input type='text'  onChange={(event)=>{setMoyen(event.target.value)}}/>
                       <label>Numéro du transporteur des matériels</label>
                       <input type='text' onChange={(event)=>{setTransid(event.target.value)}}/>
-                      <label>Nom du transporteur des matériels</label>
 
                       <div className='btn-div-modal'>
-                      <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent)}>Ajouter</button>
+                      <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent,val.responsable_id)}>Ajouter</button>
                       <button className='btn-modal' onClick={toggleModal}>Fermer</button>
                       </div>
                      
