@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import {Bar} from 'react-chartjs-2'
 import Navbar from '../components/Acceuil/Navbar'
 import Darkmode from '../components/Acceuil/Darkmode'
-import monitor from '../pages/images/monitor.svg'
+import monitor from '../pages/images/utilisateur.svg'
 import input from '../pages/images/in.svg'
 import out from '../pages/images/out.svg'
 import '../pages/css/Home.css'
 import axios from 'axios'
 import {format} from 'date-fns'
+import { Chart } from 'chart.js/auto';
 
 function Home() {
   const [list,setList]=useState([]);
@@ -17,7 +18,7 @@ function Home() {
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
     const listEntree=()=>{
-      axios.get("http://localhost:3002/readHistoryEntree")
+      axios.get("http://localhost:3003/readHistoryEntree")
       .then((response)=>{
         setList(response.data)
       })
@@ -29,7 +30,7 @@ function Home() {
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
     const listSortie=()=>{
-      axios.get("http://localhost:3002/readHistorySortie")
+      axios.get("http://localhost:3003/readHistorySortie")
       .then((response)=>{
         setList2(response.data)
       })
@@ -37,6 +38,60 @@ function Home() {
     };
     listSortie();
   },[])
+
+  /*Count Materiel*/
+  const[nbrmat,setNbrmat]=useState();
+  useEffect(()=>{
+    const countMat=()=>{
+      axios.get("http://localhost:3003/countMat")
+      .then((response)=>{
+        setNbrmat(response.data.sum)
+      })
+      .catch(err=>(console.log(err)))
+    }
+    countMat();
+  },[])
+
+  /*Count Entree*/
+  const [nbrutil,setNbrutil]=useState("");
+  useEffect(()=>{
+    const countUtil=()=>{
+      axios.get("http://localhost:3003/countMat1")
+      .then((response)=>{
+        setNbrutil(response.data.name)
+      })
+      .catch(err=>(console.log(err)))
+    }
+    countUtil();
+  },[])
+
+   /*Count Sortie*/
+   const[nbrsortie,setNbrsortie]=useState("");
+   useEffect(()=>{
+    const countSortie=()=>{
+      axios.get("http://localhost:3003/countMat2")
+      .then((response)=>{
+       setNbrsortie(response.data.countSortie)
+      })
+      .catch(err=>(console.log(err)))
+    }
+    countSortie(); 
+   },[])
+
+      const chart = {
+        labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+        datasets: [
+          {
+            label: 'Ventes mensuelles',
+            data: [12, 19, 3, 5, 2],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Couleur de remplissage des barres
+            borderColor: 'rgba(75, 192, 192, 1)', // Couleur de la bordure des barres
+            borderWidth: 1, // Épaisseur de la bordure des barres
+          },
+        ],
+      };
+
+
 
   return (
     <>
@@ -50,15 +105,15 @@ function Home() {
 
             <div className='main-card'>
               <div className='card card1'>
-                <div className='title-card1'><p>100 <br/> <br/> <span>Matériels</span></p></div>
-                <div><img src={monitor} className='image-card' /></div>
+                <div className='title-card1'><p>{nbrutil!==null?nbrutil:"0"}  <br/> <br/> <span>Utilisateurs</span></p></div>
+                <div><img src={monitor} className='image-card image-utilisateur' /></div>
               </div>
               <div className='card card1'>
-                <div className='title-card1'><p>50  <br/> <br/> <span>Entrées</span></p></div>
+                <div className='title-card1'><p> {nbrmat!==null?nbrmat:"0"} <br/> <br/> <span>Entrées</span></p></div>
                 <div><img src={input} className='image-card' /></div>
               </div>
               <div className='card card1'>
-                <div className='title-card1'><p>50  <br/> <br/> <span>Sorties</span></p></div>
+                <div className='title-card1'><p>{nbrsortie!==null?nbrsortie:"0"}  <br/> <br/> <span>Sorties</span></p></div>
                 <div><img src={out} className='image-card' /></div>
               </div>
             </div>
@@ -67,13 +122,7 @@ function Home() {
           {/*Chart*/}
             <div>
               <div className='card2'>
-                {/*<Bar
-               data={{
-                labels:['Red','Yellow','Rouge']
-               }}
-               height={400}
-               width={600}
-              />*/}
+                 <Bar data={chart}/>
               </div>
             </div>
 
