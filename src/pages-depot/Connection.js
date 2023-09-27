@@ -6,11 +6,17 @@ function Connection() {
   return (
     <>
       <div>Connection</div>
-      <Link to={"/Login"}>
+
+      <Link to={"/Login-employe"}>
         <button>Employé</button>
       </Link>
-      <button>Dépot</button>
-      <button>Sécurité</button>
+      <Link to={"/Login-depot"}>
+        <button>Dépot</button>
+      </Link>
+      <Link to={"/Login-securite"}>
+        <button>Sécurité</button>
+      </Link>
+      
     </>
 
   )

@@ -7,6 +7,9 @@ import Entree from './pages/Entree';
 import Sortie from './pages/Sortie';
 import Ajouter from './pages/Ajouter';
 import Connection from './pages-depot/Connection';
+import LoginDepot from './pages-depot/LoginDepot';
+
+
 
 function App() {
 
@@ -15,15 +18,18 @@ function App() {
     <div className="App">
 
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Log/>}></Route>
-      <Route path='/Login' element={<Log/>}></Route>
-      <Route path='/Home' element={<Home/>}></Route>
-      <Route path='/Entree' element={<Entree/>}></Route>
-      <Route path='/Sortie' element={<Sortie/>}></Route>
-      <Route path='/Ajouter' element={<Ajouter/>}></Route>
-      <Route path='/ChangePassword' element={<ChangePassword/>}></Route>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Connection/>}></Route>
+        <Route path='/Login-employe' element={<Log/>}></Route>
+        <Route path='/Home' element={<Home/>}></Route>
+        <Route path='/Entree' element={<Entree/>}></Route>
+        <Route path='/Sortie' element={<Sortie/>}></Route>
+        <Route path='/Ajouter' element={<Ajouter/>}></Route>
+        <Route path='/ChangePassword' element={<ChangePassword/>}></Route>
+
+        <Route path='/Login-depot' element={<LoginDepot/>}></Route>
+        <Route path='/Home' element={<Home/>}></Route>
+      </Routes>
     </BrowserRouter>
 
     </div>
