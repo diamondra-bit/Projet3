@@ -4,7 +4,7 @@ function LoginDepot(){
     return(
         <>
             <div className="block">
-                <input type='text' placeholder='numéro'/>
+                <input type='text' placeholder=''/>
                 <input type='text' placeholder='mot de passe'/>
             </div>
         </>
