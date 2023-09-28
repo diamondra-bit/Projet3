@@ -1,0 +1,19 @@
+.block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width:80%;
+    height: 500px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin: auto;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.block input{
+    width: 20em;
+    justify-content: space-between;
+}

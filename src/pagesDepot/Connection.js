@@ -7,13 +7,13 @@ function Connection() {
     <>
       <div>Connection</div>
 
-      <Link to={"/Login-employe"}>
+      <Link to={"/LoginEmploye"}>
         <button>Employé</button>
       </Link>
-      <Link to={"/Login-depot"}>
+      <Link to={"/LoginDepot"}>
         <button>Dépot</button>
       </Link>
-      <Link to={"/Login-securite"}>
+      <Link to={"/LoginSecurite"}>
         <button>Sécurité</button>
       </Link>
       
