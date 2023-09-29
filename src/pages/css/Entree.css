@@ -5,6 +5,7 @@
     --tr:#fff;
     --th: #053f5c;
     --button-entree: #a1d7f72c;
+    --button-sortir:  #053f5c;
     --text-head:#fff;
     --td: #011f2e;
 
@@ -13,8 +14,9 @@
     --container-inline:#2e374b4b;
     --title-material:rgba(255, 255, 255, 0.8);
     --tr:#a1d7f72c;
-    --th:#1aa7ec;
+    --th:#4adede;
     --button-entree:linear-gradient(to right,#1aa7ec,#4adede);
+    --button-sortir: linear-gradient(to right,#1aa7ec,#4adede);
     --text-head:#0d0c42a6;
     --td:#ffffffb9;
 }
@@ -130,7 +132,7 @@ tr:nth-child(even){
     margin-right: 2em;
 }
 .btn-sortir{
-    background:var(--th);
+    background:var(--button-sortir);
     padding: 5px 10px;
     border: none;
     font-size: 0.8em;

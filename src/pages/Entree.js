@@ -41,7 +41,7 @@ function Entree() {
   
       /*Insérer les matériaux*/
           const handleSubmit= (event)=>{
-            axios.post("http://localhost:3003/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
+            axios.post("http://localhost:3002/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
             .catch(err => console.log(err))
             navigate('/Entree');
           }
@@ -58,7 +58,7 @@ function Entree() {
         const [list,setList]=useState([]);
           useEffect(()=>{
             const listMateriel=()=>{
-              axios.get("http://localhost:3003/read")
+              axios.get("http://localhost:3002/read")
               .then((response)=>{
                 setList(response.data)
               })
@@ -70,13 +70,13 @@ function Entree() {
      /*Transférer données vers Sortie*/
           const handleUpdate=(idsel)=>{
             toggleModal2();
-            axios.post(`http://localhost:3003/insertSortie/${idsel}`)
-            axios.put(`http://localhost:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
-            axios.put(`http://localhost:3003/updateResponsable/${idsel}`,{uid:uid})
-            axios.put(`http://localhost:3003/updateMoyen/${idsel}`,{moyen:moyen})
-            axios.put(`http://localhost:3003/updateTransport/${idsel}`,{transid:transid})
-            axios.put(`http://localhost:3003/updateNom/${idsel}`,{transid:transid})
-            axios.put(`http://localhost:3003/decrementer/${idsel}`)
+            axios.post(`http://localhost:3002/insertSortie/${idsel}`)
+            axios.put(`http://localhost:3002/updateHeure/${idsel}`,{heure_sort:currentDate2})
+            axios.put(`http://localhost:3002/updateResponsable/${idsel}`,{uid:uid})
+            axios.put(`http://localhost:3002/updateMoyen/${idsel}`,{moyen:moyen})
+            axios.put(`http://localhost:3002/updateTransport/${idsel}`,{transid:transid})
+            axios.put(`http://localhost:3002/updateNom/${idsel}`,{transid:transid})
+            axios.put(`http://localhost:3002/decrementer/${idsel}`)
             .catch(err=>console.log(err))
             navigate('/Sortie');
           }
@@ -85,7 +85,7 @@ function Entree() {
           const [texte, setTexte] = useState("");
           const [searchlist, setSearchlist] = useState([]);  
           const handleSearch = () => {
-              axios.get(`http://localhost:3003/searchEntree?texte=${encodeURIComponent(texte)}`)
+              axios.get(`http://localhost:3002/searchEntree?texte=${encodeURIComponent(texte)}`)
               .then((response) => {
                 setSearchlist(response.data); 
               })

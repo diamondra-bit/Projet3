@@ -26,7 +26,7 @@ function Ajouter() {
     
          /*Insérer les matériaux*/
          const handleSubmit= (event)=>{
-            axios.post("http://localhost:3003/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
+            axios.post("http://localhost:3002/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
            .catch(err => console.log(err))
            navigate('/Entree');
         }
