@@ -97,6 +97,13 @@ td{
     padding-left: 3em;
     padding-right: -1em;
 }
+.td-responsable{
+    width: 15em;
+    line-height: 1.5em;
+}
+.td-nbr{
+    width: 1em;
+}
 tr:nth-child(even){
     background: var(--tr);
 }

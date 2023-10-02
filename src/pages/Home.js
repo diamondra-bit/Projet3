@@ -114,15 +114,16 @@ function Home() {
               <div className='card2'>
               {
               list.map((val,key)=>(
+                val.nbr_ent>=1 &&(
                 <div className='history-entree'>  
                   <div className='history-nom history1' >{val.nom_ent}</div>     
                   <div  className='history-nom history1' >{val.nbr_ent}</div>     
                   <div  className='history-nom history1'  >{format(new Date(val.heure_ent),'dd-MM-yyyy')}</div>
                   < div  className='history-nom history1' >{format(new Date(val.heure_ent),'HH:mm')}</div>
-                  <div  className='history-nom history1' >{val.name}</div>   
+                  <div  className='history-nom history1' >{val.lastname}</div>   
              
                 </div>
-                          
+                )         
         ))}
             </div>
 
@@ -131,13 +132,15 @@ function Home() {
               </div>
               <h2 className='history-title-entry'>Sorties effectuées récemment</h2>
               <div className='card2'>
+                
               {
               list2.map((val,key)=>(
+             
                 <div className='history-entree'>  
                   <div  className='history-nom history1' >{val.nom_sort}</div>     
                   <div  className='history-nom history1'>{format(new Date(val.heure_sort),'dd-MM-yyyy')}</div>
                   < div  className='history-nom history1'>{format(new Date(val.heure_sort),'HH:mm')}</div>     
-                  <div  className='history-nom history1'>{val.name}</div>
+                  <div  className='history-nom history1'>{val.lastname}</div>
                 </div>
                           
         ))}
