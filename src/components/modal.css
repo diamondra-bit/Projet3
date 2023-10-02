@@ -1,3 +1,11 @@
+:root{
+    --background:#fff;
+    --form-add: #011f2e;
+}
+[data-theme="dark"]{
+    --background:#060918f8;
+    --form-add:#ffffff54;
+}
 .modal,.overlay{
     width: 100vw;
     height: 160vh;
@@ -16,7 +24,7 @@
     left: 60%;
     transform: translate(-50%,-50%);
     line-height: 1.4;
-    background: #fff;
+    background: var(--background);
     padding: 14px;
     width: 600px;
     height: 400px;
@@ -24,4 +32,17 @@
 
 .modal-content{
     height: 450px;
+}
+
+.form-add{
+    color:var(--form-add);
+    margin-left: 5em;
+}
+.form-add input{
+    background: #a1d7f72c;
+    display: block;
+    width: 30em;
+    margin-bottom: 1.2em;
+    margin-top: 0.5em;
+    padding:1em;
 }
