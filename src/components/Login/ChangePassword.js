@@ -18,11 +18,11 @@ function ChangePassword() {
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-        axios.post("http://localhost:3002/change", {mdp:mdp,numero:numero} )
+        axios.post("http://localhost:3003/change", {mdp:mdp,numero:numero} )
         .then( (res)=>{
            if(res.data=== "Success")
            {
-            navigate('/')
+            navigate('/LoginEmploye')
            }else{
             alert("Mot de passe non changé")
            }

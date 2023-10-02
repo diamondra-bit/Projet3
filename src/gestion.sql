@@ -6,7 +6,7 @@ create table mdp(
 
 /*Remplir les données de la table à partir de tusers*/
 insert into mdp(id,password) 
-(select id,password from client);
+(select id,password from tusers);
 
 /*Table Entrées*/
 create table entree (
@@ -25,7 +25,10 @@ create table sortie (
     moyen_transport VARCHAR(100),
     responsable_id VARCHAR(100),
    responsable_nom VARCHAR(100),
-    id VARCHAR(100)
+    id VARCHAR(100),
+    securite1 VARCHAR(100),
+    securite2 VARCHAR(100),
+    etat_sortie VARCHAR(100)
 )
 
 /*Transférer les données de la table entrées vers la table sortie*/

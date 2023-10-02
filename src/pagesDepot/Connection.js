@@ -7,9 +7,10 @@ function Connection() {
 
   return (
     <>
+    <div className='body'>
       <div>Connection</div>
 
-        <div class="container">
+        <div class="container1">
           <div class="box">
             <div class="content">
                 <h2>01</h2>
@@ -22,7 +23,7 @@ function Connection() {
           </div>  
         </div>
 
-        <div class="container">
+        <div class="container1">
           <div class="box">
             <div class="content">
                 <h2>02</h2>
@@ -35,7 +36,7 @@ function Connection() {
           </div>  
         </div>
 
-        <div class="container">
+        <div class="container1">
           <div class="box">
             <div class="content">
                 <h2>03</h2>
@@ -46,7 +47,8 @@ function Connection() {
                 </Link>
             </div>
           </div>  
-        </div>      
+        </div>  
+        </div>    
     </>
 
   )

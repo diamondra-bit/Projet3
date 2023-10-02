@@ -12,7 +12,7 @@ function Sortie() {
   /*Afficher les sorties*/
   useEffect(()=>{
     const listMateriel=()=>{
-      axios.get("http://localhost:3002/readSortie")
+      axios.get("http://localhost:3003/readSortie")
       .then((response)=>{
         setList(response.data)
       })
