@@ -8,7 +8,7 @@ function Connection() {
   return (
     <>
     <div className='body'>
-      <div>Connection</div>
+      
 
         <div class="container1">
           <div class="box">
