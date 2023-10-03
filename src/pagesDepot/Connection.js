@@ -8,7 +8,7 @@ function Connection() {
   return (
     
     <>
-      <div className="body">
+      
 
         <div className="container1">
 
@@ -19,7 +19,7 @@ function Connection() {
                   <p>Petite description...</p>
 
                   <Link to={"/LoginEmploye"}>
-                    <button>Employé</button>
+                    <button className= "bouton">Employé</button>
                   </Link>
               </div>
             </div>  
@@ -47,7 +47,7 @@ function Connection() {
             </div>
             
         </div>
-      </div>      
+            
     </>
 
   )
