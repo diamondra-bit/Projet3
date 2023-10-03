@@ -42,3 +42,12 @@ select * from entree limit 4;
 select * from entree inner join client on client.id=entree.id;
 
 update sortie set heure_sort=2 and id=41 where id_ent=12;
+
+/*Table sécurité*/
+create table securite (
+    id_securite VARCHAR(100),
+    mot_de_passe VARCHAR(100)
+)
+insert into securite VALUES
+("securite1","MellisSecurite1"),
+("securite2","MellisSecurite2");

@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import '../../pages/css/Log.css'
-import Validation from './Function';
+import '../../pages/css/Log.css';
 import main2 from '../../pages/images/main2.svg'
 import img1 from '../../pages/images/img1.svg'
 import img2 from '../../pages/images/img2.svg'
@@ -14,18 +13,10 @@ function Log() {
     const [numero,setNumero]=useState("");
     const [mdp,setMdp]=useState("");
 
-    const[values,setValues]=useState({
-         numero :'',
-         mdp:''
-    });
-
-
     const navigate= useNavigate();
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-
-        setValues(Validation(values));
 
         axios.post("http://localhost:3003/login", {numero:numero,mdp:mdp} )
         .then( (res)=>{
