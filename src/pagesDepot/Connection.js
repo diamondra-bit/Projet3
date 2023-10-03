@@ -7,51 +7,49 @@ function Connection() {
 
   return (
     <>
-    <div className='body'>
-      
-
-        <div class="container1">
+      <div className='bodyConnection'>
+        <div class="containerConnection">
           <div class="box">
-            <div class="content">
-                <h2>01</h2>
-                <h3>Employé</h3>
-                <p>Petite description...</p>
-                <Link to={"/LoginEmploye"}>
-                  <button>Employé</button>
+            <div class="contentConnection">
+                <h2 class="numero">01</h2>
+                <h3 class="titre">Employé</h3>
+                <p class="paragrapheConnection">Petite description...</p>
+                <Link to={"/LoginEmploye"} class="btnConnection">
+                  <button >Entrer</button>
                 </Link>
             </div>
           </div>  
+        
+
+          <div class="containerConnection">
+            <div class="box">
+              <div class="contentConnection">
+                  <h2 class="numero">02</h2>
+                  <h3 class="titre">Dépôt</h3>
+                  <p class="paragrapheConnection">Petite description...</p>
+                  <Link to={"/LoginDepot"}  class="btnConnection">
+                    <button>Entrer</button>
+                  </Link>
+              </div>
+            </div>
+          </div>   
+        
+          <div class="containerConnection">
+            <div class="box">
+              <div class="contentConnection">
+                  <h2 class="numero">03</h2>
+                  <h3 class="titre">Sécurité</h3>
+                  <p class="paragrapheConnection">Petite description...</p>
+                  <Link to={"/LoginSecurite"}  class="btnConnection">
+                    <button>Entrer</button>
+                  </Link>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="container1">
-          <div class="box">
-            <div class="content">
-                <h2>02</h2>
-                <h3>Dépôt</h3>
-                <p>Petite description...</p>
-                <Link to={"/LoginDepot"}>
-                  <button>Dépot</button>
-                </Link>
-            </div>
-          </div>  
-        </div>
-
-        <div class="container1">
-          <div class="box">
-            <div class="content">
-                <h2>03</h2>
-                <h3>Sécurité</h3>
-                <p>Petite description...</p>
-                <Link to={"/LoginSecurite"}>
-                  <button>Sécurité</button>
-                </Link>
-            </div>
-          </div>  
-        </div>  
-        </div>    
+      </div>
     </>
 
   )
 }
-
 export default Connection
