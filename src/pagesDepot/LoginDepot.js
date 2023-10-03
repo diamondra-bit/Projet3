@@ -3,7 +3,7 @@ import './cssDepot/LoginDepot.css'
 
 function LoginDepot(){
 
-    const [dark,setDark] = useState(false);
+    /*const [dark,setDark] = useState(false);
     const [numero,setNumero] = useState('');
 
     const changeToDark = () => {
@@ -21,6 +21,6 @@ function LoginDepot(){
                 <button className={dark ? 'btn btn-primary' : 'btn btn-dark'} onClick={changeToDark}>Dark</button>
             </div>
         </>
-    )
+    )*/
 }
 export default LoginDepot

@@ -10,7 +10,7 @@ function Connection() {
     <>
       <div className="body">
 
-        <div className="container">
+        <div className="container1">
 
             <div className="box">
               <div className="content">
