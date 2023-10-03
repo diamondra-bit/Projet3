@@ -97,6 +97,13 @@ td{
     padding-left: 3em;
     padding-right: -1em;
 }
+.td-responsable{
+    width: 15em;
+    line-height: 1.5em;
+}
+.td-nbr{
+    width: 1em;
+}
 tr:nth-child(even){
     background: var(--tr);
 }
@@ -142,16 +149,4 @@ tr:nth-child(even){
 }
 .btn-print{
     margin-top: 1em;
-}
-.form-add{
-    color: #011f2e;
-    margin-left: 5em;
-}
-.form-add input{
-    background: #a1d7f72c;
-    display: block;
-    width: 30em;
-    margin-bottom: 1.2em;
-    margin-top: 0.5em;
-    padding:1em;
 }

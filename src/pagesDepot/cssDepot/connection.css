@@ -18,7 +18,8 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    display: grid;
+    /*display: grid;*/
+    display: flex;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-gap: 0 40px;
     grid-template-rows: auto;
@@ -33,6 +34,7 @@
     align-items: center;
     border: 1px solid #000;
 }
+
 .content
 {
     position: relative;

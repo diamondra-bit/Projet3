@@ -18,7 +18,7 @@ function Home() {
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
     const listEntree=()=>{
-      axios.get("http://localhost:3002/readHistoryEntree")
+      axios.get("http://localhost:3003/readHistoryEntree")
       .then((response)=>{
         setList(response.data)
       })
@@ -30,7 +30,7 @@ function Home() {
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
     const listSortie=()=>{
-      axios.get("http://localhost:3002/readHistorySortie")
+      axios.get("http://localhost:3003/readHistorySortie")
       .then((response)=>{
         setList2(response.data)
       })
@@ -43,7 +43,7 @@ function Home() {
   const[nbrmat,setNbrmat]=useState();
   useEffect(()=>{
     const countMat=()=>{
-      axios.get("http://localhost:3002/countMat")
+      axios.get("http://localhost:3003/countMat")
       .then((response)=>{
         setNbrmat(response.data.sum)
       })
@@ -56,7 +56,7 @@ function Home() {
   const [nbrutil,setNbrutil]=useState("");
   useEffect(()=>{
     const countUtil=()=>{
-      axios.get("http://localhost:3002/countMat1")
+      axios.get("http://localhost:3003/countMat1")
       .then((response)=>{
         setNbrutil(response.data.name)
       })
@@ -69,7 +69,7 @@ function Home() {
    const[nbrsortie,setNbrsortie]=useState("");
    useEffect(()=>{
     const countSortie=()=>{
-      axios.get("http://localhost:3002/countMat2")
+      axios.get("http://localhost:3003/countMat2")
       .then((response)=>{
        setNbrsortie(response.data.countSortie)
       })
@@ -114,15 +114,16 @@ function Home() {
               <div className='card2'>
               {
               list.map((val,key)=>(
+                val.nbr_ent>=1 &&(
                 <div className='history-entree'>  
                   <div className='history-nom history1' >{val.nom_ent}</div>     
                   <div  className='history-nom history1' >{val.nbr_ent}</div>     
                   <div  className='history-nom history1'  >{format(new Date(val.heure_ent),'dd-MM-yyyy')}</div>
                   < div  className='history-nom history1' >{format(new Date(val.heure_ent),'HH:mm')}</div>
-                  <div  className='history-nom history1' >{val.name}</div>   
+                  <div  className='history-nom history1' >{val.lastname}</div>   
              
                 </div>
-                          
+                )         
         ))}
             </div>
 
@@ -131,13 +132,15 @@ function Home() {
               </div>
               <h2 className='history-title-entry'>Sorties effectuées récemment</h2>
               <div className='card2'>
+                
               {
               list2.map((val,key)=>(
+             
                 <div className='history-entree'>  
                   <div  className='history-nom history1' >{val.nom_sort}</div>     
                   <div  className='history-nom history1'>{format(new Date(val.heure_sort),'dd-MM-yyyy')}</div>
                   < div  className='history-nom history1'>{format(new Date(val.heure_sort),'HH:mm')}</div>     
-                  <div  className='history-nom history1'>{val.name}</div>
+                  <div  className='history-nom history1'>{val.lastname}</div>
                 </div>
                           
         ))}

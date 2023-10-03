@@ -12,7 +12,7 @@ function Sortie() {
   /*Afficher les sorties*/
   useEffect(()=>{
     const listMateriel=()=>{
-      axios.get("http://localhost:3002/readSortie")
+      axios.get("http://localhost:3003/readSortie")
       .then((response)=>{
         setList(response.data)
       })
@@ -60,7 +60,7 @@ function Sortie() {
                   <td className='td-heure'>{format(new Date(val.heure_sort),'dd-MM-yyyy')}</td>
                   <td className='td-sortie'>{format(new Date(val.heure_sort),'HH:mm')}</td>
                   <td className='td-responsable'>{val.id}</td>
-                  <td >{val.name}</td>
+                  <td >{val.firstname}</td>
                   <td >{val.moyen_transport}</td>
                   <td className='td-responsable'>{val.responsable_id}</td>
                   <td >{val.responsable_nom}</td>
