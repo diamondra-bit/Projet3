@@ -8,9 +8,9 @@ function Connection() {
   return (
     
     <>
-      <div className="body">
+      <div className="bodyConnnection">
 
-        <div className="container">
+        <div className="containerConnection">
 
             <div className="box">
               <div className="content">
