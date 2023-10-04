@@ -46,3 +46,10 @@
     margin-top: 0.5em;
     padding:1em;
 }
+
+.modal-content-security{
+    left: 50%;
+}
+.overlay-security{
+    background:rgba(0,0,0,0.6);
+ }
