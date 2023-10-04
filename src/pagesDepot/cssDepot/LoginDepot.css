@@ -20,23 +20,7 @@
     justify-content: space-between;
 }*/
 
-body {
-    margin: 0;
-    font-family: 'Noto Sans Mono', monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-image: linear-gradient(135deg #3f1a22 10%, #0d2549 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
