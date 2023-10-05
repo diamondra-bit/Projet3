@@ -10,12 +10,12 @@
 
 [data-theme="dark"]{
     --body_background:#14161e;
-    --container-navbar-left: #2e374b4b;
-    --card-color: #2e374b4b;
+    --container-navbar-left: #1b223299;
+    --card-color: #1b223299;
     --title-card1:rgba(255, 255, 255, 0.5);
     --title-card3: #4bc0c0;;
     --title-logo:#4adede;
-    --container-link:rgba(255, 255, 255, 0.5);
+    --container-link:#9aa8c9a6;
     --color-card2:rgba(255, 255, 255, 0.5);
 }
 
@@ -44,11 +44,11 @@
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    width: 280px;
+    width: 320px;
     height: 100px;
     border-radius: 10px;
     box-shadow:5px 5px 15px rgba(0,0,0, 0.3);
-    margin:2em 1em;
+    margin:2em 2em;
  
 }
 .card1{
@@ -59,7 +59,7 @@
     height: 220px;
     border-radius: 10px;
     box-shadow:5px 5px 15px rgba(0,0,0, 0.3);
-    margin:0em 1em 5em ;
+    margin: 2em 1em 5em 2em;
     background-color:var(--card-color);
     color: var(--color-card2);
 }
@@ -67,7 +67,7 @@
 
 .container-center{
     width: 40%;
-    margin: 2em 0 0 4em;
+    margin: 5em 0 0 4em;
     display: flex;
 }
 
@@ -80,10 +80,10 @@
     text-decoration: none;
     text-transform: uppercase;
     color:var(--container-link);
-    font-size: 1em;
+  font-size: 0.9em;
 }
 .container-navbar-left{
-    width: 300px;
+    width: 250px;
     height: 66em;
     background-color: var(--container-navbar-left);
     border-radius: 10px;
@@ -112,9 +112,10 @@ margin-top: 2em;
     width: 45%;
 }
 .history-title-entry{
-    margin: -1em  0em 0em 3em;
+    margin: -1em 0em 0em 2em;
     color: var(--title-card3);
     font-weight: 200;
+    font-size: 1.4em;
 }
 .image-icone{
     margin-right: 25px;
@@ -137,19 +138,19 @@ input[type="checkbox"]{
     display: none;
 }
 .ligne{
-    width: 11em;
-    height: 0.2em;
+    width: 8em;
+    height: 0.1em;
     background-color: #216464;
     margin-top: -3em;
-    margin-left: 4.5em;
+    margin-left: 3.9em;
 }
 .logo{
     width: 8em;
-    margin: 2em -3em -2em;
+    margin: 2em -3em 0em;
 }
 .main-card{
     display: flex;
-    width: 100%;
+    width: 66em;
     margin: 0em auto 0;
 }
 .title-link{
@@ -162,18 +163,19 @@ input[type="checkbox"]{
 }
 .title-card3{
     margin: 2em ;
-    margin-left: -19em;
+    margin-left: -22em;
     color: var(--title-card3);
     text-transform: uppercase;
     font-weight: 350;
 }
 .title-logo{
-    background: linear-gradient(to top,#1aa7ec,#4adede);
+   /* background: linear-gradient(to top,#1aa7ec,#4adede);
     -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    background-clip: text;*/
+    color: #1aa7ec;
     margin-top:0.2em;
-    margin: 1em 0 0 -1.5em;
+    margin: 1em 0 0 -1em;
+    font-size: 1.6em;
 }
 .sortie{
     width: 15px;

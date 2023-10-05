@@ -21,7 +21,7 @@ function Navbar() {
               </div>
 
             <div>
-                <p className='title-link'>Matériel</p>
+             
                 <div  className='container-center'>
                     <img src={computer} className='image-icone'/>
                     <Link to="/Entree" className='container-link'>Entrées</Link>
@@ -32,10 +32,10 @@ function Navbar() {
                   </div>
 
             <div>
-                <p className='title-link'>Utilisateur</p>
+              
                   <div  className='container-center'>
                     <img src={person} className='image-icone'/>
-                    <Link to="/" className='container-link'>Compte</Link>
+                    <Link to="/" className='container-link'>Retour</Link>
                   </div>
             </div>
             </div>

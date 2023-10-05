@@ -43,13 +43,10 @@ function Sortie() {
           <table>
             <thead>
               <th>Nom du matériel</th>
-              <th className='th-heure'>Date de sortie</th>
-              <th className='th-sortie'>Heure de sortie</th>
-              <th  className='th-responsable'> Numero du Responsable</th>
+              <th>Date de sortie</th>
+              <th >Heure de sortie</th>
               <th> Nom du Responsable</th>
-              <th>Moyens de transport</th>
-              <th> Numero du transporteur</th>
-              <th>Chauffeur ou autre</th>
+            
 
             </thead>
             <tbody>
@@ -59,11 +56,8 @@ function Sortie() {
                   <td className='td-id td-nom'>{val.nom_sort}</td>
                   <td className='td-heure'>{format(new Date(val.heure_sort),'dd-MM-yyyy')}</td>
                   <td className='td-sortie'>{format(new Date(val.heure_sort),'HH:mm')}</td>
-                  <td className='td-responsable'>{val.id}</td>
-                  <td >{val.firstname}</td>
-                  <td >{val.moyen_transport}</td>
-                  <td className='td-responsable'>{val.responsable_id}</td>
-                  <td >{val.responsable_nom}</td>
+                  <td >{val.firstname} {val.lastname}</td>
+                
     </tr>
                ))
               }

@@ -1,10 +1,12 @@
 :root{
     --background:#fff;
     --form-add: #011f2e;
+    --form-add-input: #a1d7f72c;
 }
 [data-theme="dark"]{
-    --background:#060918f8;
-    --form-add:#ffffff54;
+    --background: linear-gradient(to top,#1aa7ec,#4adede);
+    --form-add:#011f2e;
+    --form-add-input: #21597a2c;
 }
 .modal,.overlay{
     width: 100vw;
@@ -18,6 +20,10 @@
 .overlay{
    background:rgba(0,0,0,0.6);
 }
+
+.overlay-security{
+    background-image: linear-gradient(#6baace, #2559b9);
+ }
 .modal-content{
     position: absolute;
     top: 30%;
@@ -29,17 +35,21 @@
     width: 600px;
     height: 400px;
 }
-
-.modal-content{
-    height: 450px;
+.modal-content2{
+    height: 250px;
 }
 
+
+.modal-content-security{
+    left: 50%;
+    height: 550px;
+}
 .form-add{
     color:var(--form-add);
     margin-left: 5em;
 }
 .form-add input{
-    background: #a1d7f72c;
+    background:var(--form-add-input);
     display: block;
     width: 30em;
     margin-bottom: 1.2em;

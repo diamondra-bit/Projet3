@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
 import main2 from '../../pages/images/main2.svg'
 import img1 from '../../pages/images/img1.svg'
-import img2 from '../../pages/images/img2.svg';
-import { Link, useNavigate } from 'react-router-dom'
+import img2 from '../../pages/images/img2.svg'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 function Loginsecurite() {
-    const[id_securite,setId_securite]=useState("");
-    const[mot_de_passe,setMot_de_passe]=useState("");
+    const [id_securite,setId_securite]=useState("");
+    const [mot_de_passe,setMot_de_passe]=useState("");
 
     const navigate= useNavigate();
+
     const handleSubmit=(event)=>{
         event.preventDefault();
+
         axios.post("http://localhost:3003/loginSecurite", {id_securite:id_securite,mot_de_passe:mot_de_passe} )
         .then( (res)=>{
            if(res.data=== "Success")
            {
-            navigate('/Home')
+            navigate('/SecuriteHome')
            }else{
             alert("Utilisateur non enregistré")
            }

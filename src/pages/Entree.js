@@ -23,10 +23,13 @@ function Entree() {
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
 
+ 
+
       /*Recuperer la date d'entrée*/
           useEffect( ()=>{
             const intervalId= setInterval(()=>{
-              setCurrentDate(new Date()); },1000);
+              setCurrentDate(new Date());
+             } ,1000);
           
               return ()=>{clearInterval(intervalId);}
           },[] )
@@ -73,9 +76,6 @@ function Entree() {
             axios.post(`http://localhost:3003/insertSortie/${idsel}`)
             axios.put(`http://localhost:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
             axios.put(`http://localhost:3003/updateResponsable/${idsel}`,{uid:uid})
-            axios.put(`http://localhost:3003/updateMoyen/${idsel}`,{moyen:moyen})
-            axios.put(`http://localhost:3003/updateTransport/${idsel}`,{transid:transid})
-            axios.put(`http://localhost:3003/updateNom/${idsel}`,{transid:transid})
             axios.put(`http://localhost:3003/decrementer/${idsel}`)
             .catch(err=>console.log(err))
             navigate('/Sortie');
@@ -162,7 +162,7 @@ function Entree() {
                   <table>
                     <thead>
                       <th>Nom du matériel</th>
-                      <th>Nombre de matériels</th>
+                      <th>Nombre </th>
                       <th>Date d'entrée</th>
                       <th>Heure d'entrée</th>
                       <th>Responsable</th>
@@ -177,25 +177,21 @@ function Entree() {
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                             <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                             <td className='td-responsable'>{val.firstname}   {val.lastname}</td>
-                            <td> <button className='btn-sortir' onClick={toggleModal2} >Sortir</button> </td>
+                            <td> <button className='btn-sortir' onClick={toggleModal} >Sortir</button> </td>
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
                                 <div className='modal'>
-                                  <div className='overlay' onClick={toggleModal}></div>
+                                  <div className='overlay' onClick={toggleModal2}></div>
                                      <div className='modal-content modal-content2'>
                                         <div className='form-add'>
                                             <h2>Informations sur la sortie</h2>
                                             <form onSubmit={handleSubmit}>
                                               <label>Numéro du responsable de sortie</label>
                                               <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
-                                              <label>Moyens de transport </label>
-                                              <input type='text'  onChange={(event)=>{setMoyen(event.target.value)}}/>
-                                              <label>Numéro du transporteur des matériels</label>
-                                              <input type='text' onChange={(event)=>{setTransid(event.target.value)}}/>
                                               <div className='btn-div-modal'>
                                                 <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent,val.responsable_id)}>Ajouter</button>
-                                                <button className='btn-modal' onClick={toggleModal}>Fermer</button>
+                                                <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                               </div>
                                            </form>
                                         </div> 
@@ -227,28 +223,24 @@ function Entree() {
                               <td>{val.nbr_ent}</td>     
                               <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                               <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
-                              <td>{val.firstname}</td>
+                              <td >{val.firstname}</td>
                               <td>
-                                <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>  
+                                <button className='btn-sortir' onClick={toggleModal} >Sortir</button>  
                               </td>
             
                               {/*Modal Sortie*/}
                               {modal2 &&(
                                 <div className='modal'>
-                                  <div className='overlay' onClick={toggleModal}></div>
+                                  <div className='overlay' onClick={toggleModal2}></div>
                                     <div className='modal-content modal-content2'>
                                       <div className='form-add'>
                                         <h2>Informations sur la sortie</h2>
                                         <form onSubmit={handleSubmit}>
                                           <label>Numéro du responsable de sortie</label>
                                           <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
-                                          <label>Moyens de transport </label>
-                                          <input type='text'  onChange={(event)=>{setMoyen(event.target.value)}}/>
-                                          <label>Numéro du transporteur des matériels</label>
-                                          <input type='text' onChange={(event)=>{setTransid(event.target.value)}}/>
                                           <div className='btn-div-modal'>
                                             <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent,val.responsable_id)}>Ajouter</button>
-                                            <button className='btn-modal' onClick={toggleModal}>Fermer</button>
+                                            <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                           </div>                           
                                       </form>
                                     </div>           
