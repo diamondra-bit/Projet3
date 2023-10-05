@@ -6,51 +6,39 @@ import '../pagesDepot/cssDepot/connection.css'
 function Connection() {
 
   return (
-    
     <>
-      
-
-        <div className="container1">
-
+      <div className="bodyConnection">
+        <div className="containerConnection">
             <div className="box">
-              <div className="content">
-                  <h2>01</h2>
-                  <h3>Employé</h3>
-                  <p>Petite description...</p>
-
-                  <Link to={"/LoginEmploye"}>
-                    <button className= "bouton">Employé</button>
-                  </Link>
+              <div className="contentConnection">
+                  <h2 className="numero">01</h2>
+                  <h3 className="titre">Employé</h3>
+                  <p className="paragrapheConnection">Petite description...</p>
+                  <Link to={"/LoginEmploye"} className="btnConnection">Entrer</Link>
               </div>
             </div>  
 
             <div className="box">
-              <div className="content">
-                  <h2>02</h2>
-                  <h3>Dépôt</h3>
-                  <p>Petite description...</p>
-                  <Link to={"/LoginDepot"}>
-                    <button>Dépot</button>
-                  </Link>
+              <div className="contentConnection">
+                  <h2 className="numero">02</h2>
+                  <h3 className="titre">Dépôt</h3>
+                  <p class="paragrapheConnection">Petite description...</p>
+                  <Link to={"/LoginDepot"}  className="btnConnection">Entrer</Link>
               </div>
-            </div>  
-
+            </div> 
+        
             <div className="box">
-              <div className="content">
-                  <h2>03</h2>
-                  <h3>Sécurité</h3>
-                  <p>Petite description...</p>
-                  <Link to={"/LoginSecurite"}>
-                    <button>Sécurité</button>
-                  </Link>
+              <div className="contentConnection">
+                  <h2 className="numero">03</h2>
+                  <h3 className="titre">Sécurité</h3>
+                  <p className="paragrapheConnection">Petite description...</p>
+                  <Link to={"/LoginSecurite"}  className="btnConnection">Entrer</Link>
               </div>
             </div>
-            
         </div>
-            
+      </div>
     </>
 
   )
 }
-
 export default Connection
