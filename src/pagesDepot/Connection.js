@@ -5,10 +5,6 @@ import '../pagesDepot/cssDepot/connection.css'
 
 function Connection() {
 
-  const styleSansBordure = {
-    textDecoration: 'none', // Pour supprimer la bordure de l'élément Link
-  };
-
   return (
     <>
       <div className="bodyConnection">
@@ -18,7 +14,7 @@ function Connection() {
                   <h2 className="numero">01</h2>
                   <h3 className="titre">Employé</h3>
                   <p className="paragrapheConnection">Petite description...</p>
-                  <Link to={"/LoginEmploye"} className="btnConnection" style={styleSansBordure}>Entrer</Link>
+                  <Link to={"/LoginEmploye"} className="btnConnection">Entrer</Link>
               </div>
             </div>  
 
