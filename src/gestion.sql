@@ -24,6 +24,7 @@ create table sortie (
     nom_sort VARCHAR(100),
     heure_sort VARCHAR(100),
     moyen_transport VARCHAR(100),
+    voiture_id VARCHAR(100),
     responsable_id VARCHAR(100),
    responsable_nom VARCHAR(100),
    heure_sort_sec VARCHAR(100),
@@ -52,3 +53,7 @@ create table securite (
 insert into securite VALUES
 ("securite1","MellisSecurite1"),
 ("securite2","MellisSecurite2");
+
+/*Table finale sortie*/
+SELECT * FROM entree, tusers 
+INNER JOIN sortie ON tusers.id = entree.id on tusers.id=sortie.id;

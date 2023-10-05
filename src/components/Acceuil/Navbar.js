@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import home from '../../pages/images/home.svg'
 import computer from '../../pages/images/computer.svg'
 import person from '../../pages/images/person.svg'
-import out from '../../pages/images/out.png'
+import out from '../../pages/images/out2.svg'
 import logo from '../../pages/images/logo.png'
+import list from '../../pages/images/list.svg'
+
 
 function Navbar() {
   return (
@@ -32,11 +34,17 @@ function Navbar() {
                   </div>
 
             <div>
-              
+                  <div  className='container-center'>
+                    <img src={list} className='image-icone'/>
+                    <Link to="/SecuriteAffichage" className='container-link'>Liste</Link>
+                  </div>
+
                   <div  className='container-center'>
                     <img src={person} className='image-icone'/>
                     <Link to="/" className='container-link'>Retour</Link>
                   </div>
+
+
             </div>
             </div>
              

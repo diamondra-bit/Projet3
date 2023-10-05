@@ -42,13 +42,24 @@ function Entree() {
               return ()=>{clearInterval(intervalId);}
           },[] )
   
+
       /*Insérer les matériaux*/
           const handleSubmit= (event)=>{
             axios.post("http://localhost:3003/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
             .catch(err => console.log(err))
-            navigate('/Entree');
-          }
-     
+        
+          /*const href = '/Entree';
+          const dataTheme = event.target.getAttribute('data-theme');
+          alert(dataTheme)
+          
+          if (dataTheme='dark') {
+            navigate(href, { state: { 'data-theme': dataTheme } });
+          }*/
+
+          navigate('/Entree');
+        }
+
+
       /*Modal*/
           const toggleModal=()=>{
             setModal(!modal);
@@ -76,6 +87,9 @@ function Entree() {
             axios.post(`http://localhost:3003/insertSortie/${idsel}`)
             axios.put(`http://localhost:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
             axios.put(`http://localhost:3003/updateResponsable/${idsel}`,{uid:uid})
+            axios.put(`http://localhost:3003/updateSec/${idsel}`)
+            axios.put(`http://localhost:3003/updateSec2/${idsel}`)
+            axios.put(`http://localhost:3003/updateEtat/${idsel}`)
             axios.put(`http://localhost:3003/decrementer/${idsel}`)
             .catch(err=>console.log(err))
             navigate('/Sortie');
@@ -177,7 +191,7 @@ function Entree() {
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                             <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                             <td className='td-responsable'>{val.firstname}   {val.lastname}</td>
-                            <td> <button className='btn-sortir' onClick={toggleModal} >Sortir</button> </td>
+                            <td> <button className='btn-sortir' onClick={toggleModal2} >Sortir</button> </td>
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
@@ -225,7 +239,7 @@ function Entree() {
                               <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                               <td >{val.firstname}</td>
                               <td>
-                                <button className='btn-sortir' onClick={toggleModal} >Sortir</button>  
+                                <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>  
                               </td>
             
                               {/*Modal Sortie*/}
