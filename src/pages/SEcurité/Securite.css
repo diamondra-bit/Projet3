@@ -1,0 +1,26 @@
+.table-container2{
+    width: 165em;
+    margin: 20px;
+}
+.th-numero-mat{
+    width: 0;
+}
+
+.sortie-ligne{
+    background-color: #053f5c;
+    width: 5em;
+    height: 0.1em;
+   margin: 0em auto 4em;
+}
+.thead{
+    color:#053f5c ;
+    background-color: #fff;
+
+}
+.div-table-container2{
+    width: 168em;
+    background-color:#e3e8f0;
+    padding: 20px ;
+    border-radius: 20px;
+    margin: 9em 0 0 2em
+}
