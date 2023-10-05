@@ -10,7 +10,8 @@ import Connection from './pagesDepot/Connection';
 import LoginDepot from './pagesDepot/LoginDepot';
 import EnregistrementsDepot from './pagesDepot/EnregistrementsDepot';
 import Loginsecurite from './pages/SEcurité/Loginsecurite';
-
+import SecuriteHome from './pages/SEcurité/SecuriteHome.js';
+import SecuriteAffichage from './pages/SEcurité/SecuriteAffichage.js';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <Route path='/' element={<Connection/>}></Route>
         <Route path='/LoginEmploye' element={<Log/>}></Route>
         <Route path='/LoginSecurite' element={<Loginsecurite/>}></Route>
+        <Route path='/SecuriteHome' element={<SecuriteHome/>}></Route>
+        <Route path='/SecuriteAffichage' element={<SecuriteAffichage/>}></Route>
         <Route path='/Home' element={<Home/>}></Route>
         <Route path='/Entree' element={<Entree/>}></Route>
         <Route path='/Sortie' element={<Sortie/>}></Route>

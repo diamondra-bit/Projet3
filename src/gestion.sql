@@ -20,12 +20,13 @@ create table entree (
 create table sortie (
     id_sortie INT(100) AUTO_INCREMENT PRIMARY KEY,
     id_ent INT(100) ,
+     id VARCHAR(100),
     nom_sort VARCHAR(100),
     heure_sort VARCHAR(100),
     moyen_transport VARCHAR(100),
     responsable_id VARCHAR(100),
    responsable_nom VARCHAR(100),
-    id VARCHAR(100),
+   heure_sort_sec VARCHAR(100),
     securite1 VARCHAR(100),
     securite2 VARCHAR(100),
     etat_sortie VARCHAR(100)
@@ -42,3 +43,12 @@ select * from entree limit 4;
 select * from entree inner join client on client.id=entree.id;
 
 update sortie set heure_sort=2 and id=41 where id_ent=12;
+
+/*Table sécurité*/
+create table securite (
+    id_securite VARCHAR(100),
+    mot_de_passe VARCHAR(100)
+)
+insert into securite VALUES
+("securite1","MellisSecurite1"),
+("securite2","MellisSecurite2");
