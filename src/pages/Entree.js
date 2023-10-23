@@ -74,6 +74,7 @@ function Entree() {
             const listMateriel=()=>{
               axios.get("http://192.168.100.48:3003/read")
               .then((response)=>{
+                console.log(response.data);
                 setList(response.data)
               })
               .catch (err => console.log(err))
@@ -124,7 +125,7 @@ function Entree() {
 
   return (
     <>
-    <div className='container-home' >
+    <div className='container-home ' >
       <div  className='navbar'> <Navbar/></div>
 
       <div>
@@ -176,19 +177,19 @@ function Entree() {
               {search&&(
                   <table>
                     <thead>
+                      <tr>
                       <th>Nom du matériel</th>
-                      <th>Nombre </th>
                       <th>Date d'entrée</th>
                       <th>Heure d'entrée</th>
                       <th>Responsable</th>
                       <th>Actions</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {list.map((val)=>(
-                        val.nbr_ent>=1 &&(
+                        
                           <tr >
-                            <td>{val.nom_ent}</td>
-                            <td className='td-nbr'>{val.nbr_ent}</td>     
+                            <td>{val.nom_ent}</td>  
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                             <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                             <td className='td-responsable'>{val.firstname}   {val.lastname}</td>
@@ -213,7 +214,7 @@ function Entree() {
                                     </div>
                                   </div>
                               )}
-                        </tr>)    
+                        </tr>   
                       ))}
                     </tbody>
                   </table>
@@ -224,7 +225,6 @@ function Entree() {
                   <table>
                       <thead>
                         <th>Nom du matériel</th>
-                        <th>Nombre de matériels</th>
                         <th>Date d'entrée</th>
                         <th>Heure d'entrée</th>
                         <th>Responsable</th>
@@ -232,10 +232,9 @@ function Entree() {
                       </thead>
                       <tbody>
                           {searchlist.map((val)=>(
-                            val.nbr_ent>=1 &&(
+                            
                               <tr >
                               <td>{val.nom_ent}</td>
-                              <td>{val.nbr_ent}</td>     
                               <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                               <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                               <td >{val.firstname}</td>
@@ -262,7 +261,7 @@ function Entree() {
                                 </div>
                               </div>
                               )}
-                            </tr>)      
+                            </tr>     
                          ))}
                       </tbody>
                   </table>
