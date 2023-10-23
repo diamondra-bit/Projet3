@@ -45,7 +45,7 @@ function Entree() {
 
       /*Insérer les matériaux*/
           const handleSubmit= (event)=>{
-            axios.post("http://localhost:3003/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
+            axios.post("http://192.168.100.48:3003/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
             .catch(err => console.log(err))
         
           /*const href = '/Entree';
@@ -72,7 +72,7 @@ function Entree() {
         const [list,setList]=useState([]);
           useEffect(()=>{
             const listMateriel=()=>{
-              axios.get("http://localhost:3003/read")
+              axios.get("http://192.168.100.48:3003/read")
               .then((response)=>{
                 setList(response.data)
               })
@@ -84,13 +84,14 @@ function Entree() {
      /*Transférer données vers Sortie*/
           const handleUpdate=(idsel)=>{
             toggleModal2();
-            axios.post(`http://localhost:3003/insertSortie/${idsel}`)
-            axios.put(`http://localhost:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
-            axios.put(`http://localhost:3003/updateResponsable/${idsel}`,{uid:uid})
-            axios.put(`http://localhost:3003/updateSec/${idsel}`)
-            axios.put(`http://localhost:3003/updateSec2/${idsel}`)
-            axios.put(`http://localhost:3003/updateEtat/${idsel}`)
-            axios.put(`http://localhost:3003/decrementer/${idsel}`)
+
+            axios.post(`http://192.168.100.48:3003/insertSortie/${idsel}`)
+            axios.put(`http://192.168.100.48:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
+            axios.put(`http://192.168.100.48:3003/updateResponsable/${idsel}`,{uid:uid})
+            axios.put(`http://192.168.100.48:3003/updateSec/${idsel}`)
+            axios.put(`http://192.168.100.48:3003/updateSec2/${idsel}`)
+            axios.put(`http://192.168.100.48:3003/updateEtat/${idsel}`)
+            axios.put(`http://192.168.100.48:3003/decrementer/${idsel}`)
             .catch(err=>console.log(err))
             navigate('/Sortie');
           }
@@ -99,7 +100,7 @@ function Entree() {
           const [texte, setTexte] = useState("");
           const [searchlist, setSearchlist] = useState([]);  
           const handleSearch = () => {
-              axios.get(`http://localhost:3003/searchEntree?texte=${encodeURIComponent(texte)}`)
+              axios.get(`http://192.168.100.48:3003/searchEntree?texte=${encodeURIComponent(texte)}`)
               .then((response) => {
                 setSearchlist(response.data); 
               })
@@ -204,7 +205,7 @@ function Entree() {
                                               <label>Numéro du responsable de sortie</label>
                                               <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                               <div className='btn-div-modal'>
-                                                <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent,val.responsable_id)}>Ajouter</button>
+                                                <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent)}>Ajouter</button>
                                                 <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                               </div>
                                            </form>
@@ -253,7 +254,7 @@ function Entree() {
                                           <label>Numéro du responsable de sortie</label>
                                           <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                           <div className='btn-div-modal'>
-                                            <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent,val.responsable_id)}>Ajouter</button>
+                                            <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_sortie)}>Ajouter</button>
                                             <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                           </div>                           
                                       </form>

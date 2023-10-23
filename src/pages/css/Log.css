@@ -18,8 +18,9 @@
 }
 .container{
         height: 100vh;
-       /* background-image: linear-gradient(#6baace, #264783);*/
-       background-image: linear-gradient(#6baace, #2559b9)
+       /* background-image: linear-gradient(#6baace, #2559b9)*/
+       background-image: linear-gradient(to left,#508db1, #2559b9)
+
     }
 .form-container{
     display: flex;

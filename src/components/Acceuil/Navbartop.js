@@ -1,6 +1,6 @@
 import React from 'react'
 import './Navbar-top.css'
-import search2 from '../../pages/images/search.svg'
+import search2 from '../../pages/images/search2.svg'
 import logout from '../../pages/images/logout.svg'
 import { Link } from 'react-router-dom';
 

@@ -18,7 +18,7 @@ function Log() {
     const handleSubmit=(event)=>{
         event.preventDefault();
 
-        axios.post("http://localhost:3003/login", {numero:numero,mdp:mdp} )
+        axios.post("http://192.168.100.48:3003/login", {numero:numero,mdp:mdp} )
         .then( (res)=>{
            if(res.data=== "Success")
            {

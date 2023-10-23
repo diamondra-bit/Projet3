@@ -55,5 +55,7 @@ insert into securite VALUES
 ("securite2","MellisSecurite2");
 
 /*Table finale sortie*/
-SELECT * FROM entree, tusers 
-INNER JOIN sortie ON tusers.id = entree.id on tusers.id=sortie.id;
+SELECT * from sortie inner join entree on sortie.id_ent=entree.id_ent 
+inner join tusers on tusers.id=sortie.id
+
+select * from entree inner join sortie on entree.id_ent=sortie.id_ent inner join tusers on tusers.id=entree.id;

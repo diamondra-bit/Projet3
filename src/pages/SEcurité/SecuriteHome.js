@@ -13,12 +13,12 @@ function SecuriteHome() {
   const [heure_sort_sec,setHeure_sort_sec]=useState(new Date());
 
   const handleSubmit=()=>{
-    axios.put(`http://localhost:3003/sortieSec1/`,{id_sec:id_sec,id_sort:id_sort})
-    axios.put(`http://localhost:3003/sortieSec2`,{nom_sec:nom_sec,id_sort:id_sort})   
-    axios.put(`http://localhost:3003/sortieSec3`,{transport_sec:transport_sec,id_sort:id_sort})
-    axios.put(`http://localhost:3003/sortieSec4`,{voiture_id:voiture_id,id_sort:id_sort})
-    axios.put(`http://localhost:3003/sortieSec5`,{id_sort:id_sort})
-    axios.put(`http://localhost:3003/sortieSecHeure`,{heure_sort_sec:heure_sort_sec,id_sort:id_sort})
+    axios.put(`http://192.168.100.48:3003/sortieSec1/`,{id_sec:id_sec,id_sort:id_sort})
+    axios.put(`http://192.168.100.48:3003/sortieSec2`,{nom_sec:nom_sec,id_sort:id_sort})   
+    axios.put(`http://192.168.100.48:3003/sortieSec3`,{transport_sec:transport_sec,id_sort:id_sort})
+    axios.put(`http://192.168.100.48:3003/sortieSec4`,{voiture_id:voiture_id,id_sort:id_sort})
+    axios.put(`http://192.168.100.48:3003/sortieSec5`,{id_sort:id_sort})
+    axios.put(`http://192.168.100.48:3003/sortieSecHeure`,{heure_sort_sec:heure_sort_sec,id_sort:id_sort})
 
     .catch(err=>console.log(err))
     navigate('/SecuriteAffichage')
