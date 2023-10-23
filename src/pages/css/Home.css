@@ -1,15 +1,18 @@
 :root{
-    --body_background:#f5f5f5;
+    --body_background2:#e7ecf8;
+    --body_background:#fff;
     --container-navbar-left: #053f5c;
     --title-card1:#10054e;
     --title-card3:#216464;;
     --title-logo:#d3def1;
     --container-link:#d0d6e9;
     --color-card2:#14161e;
+    --card-color:#ffffff;
 }
 
 [data-theme="dark"]{
     --body_background:#14161e;
+    --body_background2:#14161e;
     --container-navbar-left: #1b223299;
     --card-color: #1b223299;
     --title-card1:rgba(255, 255, 255, 0.5);
@@ -72,10 +75,14 @@
 }
 
 .container-home{
-    background-color: var(--body_background);
+    background-color: var(--body_background2);
     display: flex;
-
 }
+
+.container-home2{
+    background-color: var(--body_background);
+}
+
 .container-link{
     text-decoration: none;
     text-transform: uppercase;

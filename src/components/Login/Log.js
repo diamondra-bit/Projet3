@@ -33,16 +33,20 @@ function Log() {
   return (
     <>
 
-        <div className='container'>
+      <div className='container'>
+
+      <div className='cercle'> </div>
+      <div className='cercle2'> </div>
+      
             <div className='form-container'>
 
                 <div className='form-text'>
-                   <h1>WizFlow</h1>
+                   
                      <div className='text'>
                       Simplifiez la gestion des entrées et sorties de vos matériels en toute efficacité avec notre application
-                      GED 
+                      GED .
                     </div> 
-
+                    
                      <img src={main2} className='main'/>
                 </div>
 
@@ -70,7 +74,38 @@ function Log() {
                     </div>
                 </div>
             </div>
-      
+       
+
+     {/*    <div className='container'>
+            <div className='form-container'> 
+                <div className='form-text'>
+                        <img src={main2} className='main'/>
+                </div>
+
+                <div className='form-log'>                   
+                    <form onSubmit={handleSubmit}>
+                        <h1 className='title'> Se Connecter</h1>
+                            <div className='input-field'>
+                                <div>  <img src={img1} className='img'/></div>
+                                <div> 
+                                <input type='text'  placeholder='Numéro'
+                                onChange={(event)=>{setNumero(event.target.value)}}/>
+                                </div>
+                            </div>
+
+                            <div className='input-field'>
+                                <div>  <img src={img2} className='img'/></div>
+                                <div> <input type='text' placeholder='Mot de passe'
+                                onChange={(event)=>{setMdp(event.target.value)}}/></div>
+                            </div>
+                            <button type='submit' className='btn'>Se Connecter</button>
+
+                                
+                            </form>
+                    <Link to="/ChangePassword" className='link'>Changer votre mot de passe</Link>
+                    </div>
+            </div>
+       </div>*/}
     </>
   )
 }

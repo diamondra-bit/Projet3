@@ -123,7 +123,7 @@ function Entree() {
 
   return (
     <>
-    <div className='container-home' >
+    <div className='container-home ' >
       <div  className='navbar'> <Navbar/></div>
 
       <div>
