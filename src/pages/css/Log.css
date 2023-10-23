@@ -3,6 +3,7 @@
 .btn{
     margin-left: 30%;
     margin-bottom: 3em;
+    margin-top: 2em;
     outline: none;
     border: none;
     background-color: #077191;
@@ -10,6 +11,18 @@
     color: #fff;
     font-size: 1em;
     padding: 10px 50px;
+}
+
+input{
+    cursor: auto;
+}
+
+.plant2{
+    width: 27em;
+position: relative;
+z-index: 4;
+margin-top: 1.9em;
+margin-left: 4.8em;
 }
 
 .btn:hover{
@@ -23,7 +36,7 @@
 .form-container{
     display: flex;
     height:30em;
-    width: 55em;
+    width: 30em;
     box-shadow:10px 10px 15px rgba(1, 105, 146, 0.3);
    position: absolute;
    top:  52%;
@@ -34,6 +47,7 @@
     height:30em;
     width: 25em;
     background-color:  #3193b1;
+    display: none;
 }
 .form-log{
     height:30em;
@@ -58,10 +72,10 @@ h1{
 }
 .input-field{
     display: flex; 
-    padding:0 50px 0 20px;
+    padding:5px 50px ;
     width: 60%;
     background-color: #edf5f5;
-    margin: 2.5em auto ;
+    margin: 2em auto 0em;
     border-radius: 20px;
 }
 .form-log input{
@@ -103,14 +117,15 @@ transform: translate(6em,-3em);
 }
 
 .title{
-    margin-bottom: 1.8em;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
 }
 
 .cercle{
     width: 15em;
     height:15em;
     border-radius: 50%;
-    background-color:#08b6c2;
+    background-color:rgb(8, 182, 194);
     margin-top: -4.5em;
     margin-left: -7em;
 }

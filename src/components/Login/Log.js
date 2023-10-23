@@ -6,7 +6,8 @@ import '../../pages/css/Log.css';
 import main2 from '../../pages/images/main2.svg'
 import img1 from '../../pages/images/img1.svg'
 import img2 from '../../pages/images/img2.svg'
-
+import person from '../../pages/images/personlog.svg'
+import plant from '../../pages/images/plant.svg'
 
 
 function Log() {
@@ -37,6 +38,10 @@ function Log() {
 
       <div className='cercle'> </div>
       <div className='cercle2'> </div>
+
+      
+      <img src={plant} className='plant2'/>
+
       
             <div className='form-container'>
 
