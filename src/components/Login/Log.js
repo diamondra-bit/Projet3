@@ -6,7 +6,7 @@ import '../../pages/css/Log.css';
 import main2 from '../../pages/images/main2.svg'
 import img1 from '../../pages/images/img1.svg'
 import img2 from '../../pages/images/img2.svg'
-import person from '../../pages/images/personlog.svg'
+import hide from '../../pages/images/hide.svg'
 import plant from '../../pages/images/plant.svg'
 
 
@@ -31,6 +31,11 @@ function Log() {
         .catch(err => console.log(err))
     }
 
+    const [hidepassword,setHidepassword]=useState(false);
+    const showPassword=()=>{
+            setHidepassword(!hidepassword)
+    }
+ 
   return (
     <>
 
@@ -38,22 +43,10 @@ function Log() {
 
       <div className='cercle'> </div>
       <div className='cercle2'> </div>
-
-      
       <img src={plant} className='plant2'/>
 
       
             <div className='form-container'>
-
-                <div className='form-text'>
-                   
-                     <div className='text'>
-                      Simplifiez la gestion des entrées et sorties de vos matériels en toute efficacité avec notre application
-                      GED .
-                    </div> 
-                    
-                     <img src={main2} className='main'/>
-                </div>
 
                 <div className='form-log'>                   
                     <form onSubmit={handleSubmit}>
@@ -68,10 +61,15 @@ function Log() {
 
                             <div className='input-field'>
                                 <div>  <img src={img2} className='img'/></div>
-                                <div> <input type='text' placeholder='Entrer votre mot de passe'
+                                <div> <input type={hidepassword ? 'text' :'password'}
+                                 placeholder='Entrer votre mot de passe'
                                 onChange={(event)=>{setMdp(event.target.value)}}/></div>
+                                 <img src={hide} className='img img-mdp' onClick={showPassword}/>
                             </div>
-                            <button type='submit' className='btn'>Se Connecter</button>
+                          
+
+
+                            <button type='submit' className='btn' >Se Connecter</button>
 
                                 
                             </form>

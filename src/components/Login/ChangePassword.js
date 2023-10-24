@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import img1 from '../../pages/images/img1.svg'
 import img2 from '../../pages/images/img2.svg'
 import main3 from '../../pages/images/main3.svg'
+import plant from '../../pages/images/plant.svg'
+import hide from '../../pages/images/hide.svg'
 
 import '../../pages/css/Change.css'
 import './Function'
@@ -28,6 +30,10 @@ function ChangePassword() {
            }
         })
         .catch(err => console.log(err))
+    }
+    const [hidepassword,setHidepassword]=useState(false);
+    const showPassword=()=>{
+            setHidepassword(!hidepassword)
     }
 
   return (
@@ -61,6 +67,13 @@ function ChangePassword() {
         </div>*/ }  
 
 <div className='container'>
+
+<div className='cercle'> </div>
+      <div className='cercle2'> </div>
+
+      
+      <img src={plant} className='plant2'/>
+
             <div className='form-container'>
 
                 <div className='form-text'>
@@ -83,11 +96,19 @@ function ChangePassword() {
 
                         <div className='input-field'>
                             <div>  <img src={img2} className='img'/></div>
-                            <div> <input type='text' placeholder='Votre nouveau mot de passe'
+                            <div> <input type='text' placeholder='Votre ancien mot de passe'
                             onChange={(event)=>{setMdp(event.target.value)}}/></div>
+                             <img src={hide} className='img img-mdp' onClick={showPassword}/>
                         </div>
 
-                        <button type='submit' className='btn'>Se Connecter</button>             
+                        <div className='input-field'>
+                            <div>  <img src={img2} className='img'/></div>
+                            <div> <input type='text' placeholder='Votre nouveau mot de passe'
+                            onChange={(event)=>{setMdp(event.target.value)}}/></div>
+                             <img src={hide} className='img img-mdp' onClick={showPassword}/>
+                        </div>
+
+                        <button type='submit' className='btn'>Envoyer</button>             
                      </form>
              </div>
                 </div>

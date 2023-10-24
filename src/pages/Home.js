@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import {Bar} from 'react-chartjs-2'
+import axios from 'axios'
+import {format} from 'date-fns'
+import { Chart } from 'chart.js/auto';
+
 import Navbar from '../components/Acceuil/Navbar'
 import Darkmode from '../components/Acceuil/Darkmode'
+
 import monitor from '../pages/images/utilisateur.svg'
 import input from '../pages/images/in.svg'
 import out from '../pages/images/out.svg'
 import '../pages/css/Home.css'
-import axios from 'axios'
-import {format} from 'date-fns'
-import { Chart } from 'chart.js/auto';
+
+import firebase from 'firebase/app';
+
 
 function Home() {
   const [list,setList]=useState([]);
@@ -78,7 +83,37 @@ function Home() {
     countSortie(); 
    },[])
 
-  
+   /*Firebase*/
+   const firebaseConfig = {
+    apiKey: "AIzaSyB0hNXUJr1QSZ84paMKjAvoIlgx7iXPQFQ",
+    authDomain: "gestion-materiel-18a6b.firebaseapp.com",
+    projectId: "gestion-materiel-18a6b",
+    storageBucket:  "gestion-materiel-18a6b.appspot.com",
+    messagingSenderId:"474978693632",
+    appId: "1:474978693632:web:8fd673662e376ae1891ee5",
+    measurementId: "G-MBRG60MJBV"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const auth = firebase.app().auth();
+  const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // L'utilisateur est connecté
+        setUser(authUser);
+      } else {
+        // L'utilisateur n'est pas connecté
+        setUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
  
   return (
     <>
@@ -88,7 +123,7 @@ function Home() {
       </div>
 
       <div>
-            <Darkmode/>
+            <Darkmode/>  <p>Bienvenue, {user.displayName}!</p>
 
             <div className='main-card'>
               <div className='card card1'>
