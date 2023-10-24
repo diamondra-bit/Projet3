@@ -11,9 +11,9 @@ import monitor from '../pages/images/utilisateur.svg'
 import input from '../pages/images/in.svg'
 import out from '../pages/images/out.svg'
 import '../pages/css/Home.css'
-
-import firebase from 'firebase/app';
-
+import axios from 'axios'
+import {format} from 'date-fns'
+import { Chart } from 'chart.js/auto';
 
 function Home() {
   const [list,setList]=useState([]);
@@ -83,37 +83,7 @@ function Home() {
     countSortie(); 
    },[])
 
-   /*Firebase*/
-   const firebaseConfig = {
-    apiKey: "AIzaSyB0hNXUJr1QSZ84paMKjAvoIlgx7iXPQFQ",
-    authDomain: "gestion-materiel-18a6b.firebaseapp.com",
-    projectId: "gestion-materiel-18a6b",
-    storageBucket:  "gestion-materiel-18a6b.appspot.com",
-    messagingSenderId:"474978693632",
-    appId: "1:474978693632:web:8fd673662e376ae1891ee5",
-    measurementId: "G-MBRG60MJBV"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const auth = firebase.app().auth();
-  const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // L'utilisateur est connecté
-        setUser(authUser);
-      } else {
-        // L'utilisateur n'est pas connecté
-        setUser(null);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  
  
   return (
     <>
@@ -123,7 +93,7 @@ function Home() {
       </div>
 
       <div>
-            <Darkmode/>  <p>Bienvenue, {user.displayName}!</p>
+            <Darkmode/>
 
             <div className='main-card'>
               <div className='card card1'>
@@ -149,7 +119,6 @@ function Home() {
               <div className='card2'>
               {
               list.map((val,key)=>(
-                val.nbr_ent>=1 &&(
                 <div className='history-entree'>  
                   <div className='history-nom history1' >{val.nom_ent}</div>     
                   <div  className='history-nom history1' >{val.nbr_ent}</div>     
@@ -157,8 +126,7 @@ function Home() {
                   < div  className='history-nom history1' >{format(new Date(val.heure_ent),'HH:mm')}</div>
                   <div  className='history-nom history1' >{val.lastname}</div>   
              
-                </div>
-                )         
+                </div>              
         ))}
             </div>
 

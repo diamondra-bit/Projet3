@@ -14,6 +14,7 @@ import SecuriteHome from './pages/SEcurité/SecuriteHome.js';
 import SecuriteAffichage from './pages/SEcurité/SecuriteAffichage.js';
 
 
+
 function App() {
 
 
@@ -37,6 +38,8 @@ function App() {
         <Route path='/EnregistremetsDepot' element={<EnregistrementsDepot/>}></Route>
       </Routes>
     </BrowserRouter>
+
+
 
     </div>
   );

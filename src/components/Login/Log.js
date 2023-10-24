@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -44,8 +45,6 @@ function Log() {
       <div className='cercle'> </div>
       <div className='cercle2'> </div>
       <img src={plant} className='plant2'/>
-
-      
             <div className='form-container'>
 
                 <div className='form-log'>                   
