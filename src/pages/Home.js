@@ -10,6 +10,7 @@ import axios from 'axios'
 import {format} from 'date-fns'
 import { Chart } from 'chart.js/auto';
 
+
 function Home() {
   const [list,setList]=useState([]);
   const [list2,setList2]=useState([]);
@@ -78,8 +79,6 @@ function Home() {
     countSortie(); 
    },[])
 
-  
- 
   return (
     <>
     <div className='container-home container-home2'>
@@ -88,7 +87,7 @@ function Home() {
       </div>
 
       <div>
-            <Darkmode/>
+            <Darkmode/>  
 
             <div className='main-card'>
               <div className='card card1'>
@@ -114,7 +113,6 @@ function Home() {
               <div className='card2'>
               {
               list.map((val,key)=>(
-                val.nbr_ent>=1 &&(
                 <div className='history-entree'>  
                   <div className='history-nom history1' >{val.nom_ent}</div>     
                   <div  className='history-nom history1' >{val.nbr_ent}</div>     
@@ -122,8 +120,7 @@ function Home() {
                   < div  className='history-nom history1' >{format(new Date(val.heure_ent),'HH:mm')}</div>
                   <div  className='history-nom history1' >{val.lastname}</div>   
              
-                </div>
-                )         
+                </div>              
         ))}
             </div>
 

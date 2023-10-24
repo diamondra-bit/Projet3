@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -41,19 +42,7 @@ function Log() {
 
       
       <img src={plant} className='plant2'/>
-
-      
             <div className='form-container'>
-
-                <div className='form-text'>
-                   
-                     <div className='text'>
-                      Simplifiez la gestion des entrées et sorties de vos matériels en toute efficacité avec notre application
-                      GED .
-                    </div> 
-                    
-                     <img src={main2} className='main'/>
-                </div>
 
                 <div className='form-log'>                   
                     <form onSubmit={handleSubmit}>
