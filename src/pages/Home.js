@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Bar} from 'react-chartjs-2'
-import axios from 'axios'
-import {format} from 'date-fns'
-import { Chart } from 'chart.js/auto';
-
 import Navbar from '../components/Acceuil/Navbar'
-import Darkmode from '../components/Acceuil/Darkmode'
+import NavbarHorizontal from '../components/Acceuil/NavbarHorizontal'
 
 import monitor from '../pages/images/utilisateur.svg'
 import input from '../pages/images/in.svg'
@@ -15,10 +11,11 @@ import axios from 'axios'
 import {format} from 'date-fns'
 import { Chart } from 'chart.js/auto';
 
+import { useLocation } from 'react-router-dom';
+
 function Home() {
   const [list,setList]=useState([]);
   const [list2,setList2]=useState([]);
-
 
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
@@ -93,7 +90,7 @@ function Home() {
       </div>
 
       <div>
-            <Darkmode/>
+            <NavbarHorizontal/>  
 
             <div className='main-card'>
               <div className='card card1'>

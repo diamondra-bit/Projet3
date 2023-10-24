@@ -17,9 +17,9 @@ import SecuriteAffichage from './pages/SEcurité/SecuriteAffichage.js';
 
 function App() {
 
-
   return (
     <div className="App">
+
 
     <BrowserRouter>
       <Routes>

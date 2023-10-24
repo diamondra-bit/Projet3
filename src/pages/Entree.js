@@ -9,7 +9,7 @@ import '../pages/css/Entree.css'
 import add from '../pages/images/add.svg'
 import search2 from '../pages/images/search.svg'
 
-function Entree() {
+function Entree({numero}) {
 
   const [nom,setNom]=useState("");
   const [nombre,setNombre]=useState(0);
@@ -125,11 +125,12 @@ function Entree() {
 
   return (
     <>
+    
     <div className='container-home ' >
       <div  className='navbar'> <Navbar/></div>
 
       <div>
-            <Darkmode/>
+            <Darkmode/> 
 
             {/*Section 1*/}
             <div className='container-inline'>

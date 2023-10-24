@@ -24,7 +24,7 @@ function Log() {
         .then( (res)=>{
            if(res.data=== "Success")
            {
-            navigate('/Home')
+            navigate('/Home', { state: { numero } })
            }else{
             alert("Utilisateur non enregistré")
            }
