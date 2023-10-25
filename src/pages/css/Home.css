@@ -68,7 +68,7 @@
 }
 .notif{
     width: 2em;
-    margin-top: -3.6em;
+    margin-top: -5.3em;
 }
 .utilisateur{
     margin-top: 1em;
@@ -132,7 +132,7 @@
 }
 .container-navbar-left{
     width: 250px;
-    height: 66em;
+    height: 100%;
     background-color: var(--container-navbar-left);
     border-radius: 10px;
     box-shadow:5px 5px 15px rgba(0,0,0, 0.3);

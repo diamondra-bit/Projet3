@@ -32,7 +32,7 @@ margin-left: 4.8em;
 }
 .container{
         height: 100vh;
-        background-color: rgb(222, 240, 248);
+        background-color: #def0f8;
         overflow: hidden;
     }
 .form-container{
@@ -136,7 +136,7 @@ transform: translate(6em,-3em);
     width: 15em;
     height:15em;
     border-radius: 50%;
-background-color: #08b6c2;
+    background-color: #08b6c2;
     float: right;
     margin-top: 20em;
     margin-right: -6em;

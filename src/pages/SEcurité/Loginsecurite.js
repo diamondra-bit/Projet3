@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import main2 from '../../pages/images/main2.svg'
 import img1 from '../../pages/images/img1.svg'
 import img2 from '../../pages/images/img2.svg'
+import hide from '../../pages/images/hide.svg'
+import plant from '../../pages/images/plant.svg'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -17,19 +19,29 @@ function Loginsecurite() {
 
         axios.post("http://192.168.100.48:3003/loginSecurite", {id_securite:id_securite,mot_de_passe:mot_de_passe} )
         .then( (res)=>{
-           if(res.data=== "Success")
+           if(res.data=== "Securite1")
            {
             navigate('/SecuriteHome')
+           }else if (res.data=== "Securite2"){
+            navigate('/SecuriteHome2')
            }else{
             alert("Utilisateur non enregistré")
            }
         })
         .catch(err => console.log(err))
     }
+    
+    const [hidepassword,setHidepassword]=useState(false);
+    const showPassword=()=>{
+            setHidepassword(!hidepassword)
+    }
 
   return (
     <>
        <div className='container'>
+       <div className='cercle'> </div>
+      <div className='cercle2'> </div>
+      <img src={plant} className='plant2'/>
             <div className='form-container'>
 
                 <div className='form-text'>
@@ -56,9 +68,11 @@ function Loginsecurite() {
 
                             <div className='input-field'>
                                 <div>  <img src={img2} className='img'/></div>
-                                <div> <input type='text' placeholder='Entrer votre mot de passe'
-                                 onChange={(e)=>{setMot_de_passe(e.target.value)}}
-                              /></div>
+                                <div> <input type={hidepassword ? 'text' :'password'}
+                                 placeholder='Entrer votre mot de passe'
+                                 onChange={(e)=>{setMot_de_passe(e.target.value)}}/>
+                                </div>
+                              <img src={hide} className='img img-mdp' onClick={showPassword}/>
                             </div>
                             <button type='submit' className='btn'>Se Connecter</button>
 

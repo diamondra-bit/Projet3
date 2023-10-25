@@ -22,12 +22,7 @@ function Log() {
 
         axios.post("http://192.168.100.48:3003/login", {numero:numero,mdp:mdp} )
         .then( (res)=>{
-           if(res.data=== "Success")
-           {
             navigate('/Home', { state: { numero } })
-           }else{
-            alert("Utilisateur non enregistré")
-           }
         })
         .catch(err => console.log(err))
     }

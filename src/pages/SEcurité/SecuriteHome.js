@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
+import plant from '../../pages/images/plant.svg'
+
 
 function SecuriteHome() {
   const [nom_sec,setNom_sec]=useState("");
@@ -38,38 +40,38 @@ function SecuriteHome() {
   
   return (
     <>
-        <div className='modal'>
-                          <div className='overlay overlay-security'></div>
-                              <div className='modal-content modal-content-security'>
-                                  <div className='form-add'>
-                                    <h2>Confirmez la sortie</h2>
-                                    <form >
-                                    <label>Numéro du matériel</label>
-                                        <input type='number' 
-                                        onChange={(e)=>{setId_sort(e.target.value)}} />
+      <div className='container'>
+        <div className='cercle'> </div>
+        <div className='cercle2'> </div>
+        <div className='personal-carte carte-sortie'>
+            <div className='form-add'>
+                <h2>Confirmez la sortie</h2>
+                    <form >
+                      <label>Numéro du matériel</label>
+                        <input type='number' 
+                        onChange={(e)=>{setId_sort(e.target.value)}} />
                                              
-                                      <label>Numéro du responsable du transport</label>
-                                        <input type='number' 
-                                        onChange={(e)=>{setId_sec(e.target.value)}} />
-                                        <label>Nom du responsable du transport</label>
-                                        <input type='text'
-                                        onChange={(e)=>{setNom_sec(e.target.value)}}/>
-                                        <label>Moyens de transport</label>
-                                        <input type='text' 
-                                        onChange={(e)=>{setTransport_sec(e.target.value)}} />    
-                                      <label>Immatriculation</label>
-                                        <input type='text' 
-                                        onChange={(e)=>{setVoiture_id(e.target.value)}} />
-                                        <div className='btn-div-modal'>
-                                          <button className='btn-modal' type='submit'  onClick={()=>handleSubmit( )}>Ajouter</button>
-                                          <button className='btn-modal'onClick={toggleModal} >Fermer</button>
-                                      </div>
-                                       
-                                        
-                                    </form>
-                              </div>           
-                          </div>
-                      </div>     
+                        <label>Numéro du responsable du transport</label>
+                        <input type='number' 
+                        onChange={(e)=>{setId_sec(e.target.value)}} />
+                        <label>Nom du responsable du transport</label>
+                        <input type='text'
+                        onChange={(e)=>{setNom_sec(e.target.value)}}/>
+                        <label>Moyens de transport</label>
+                        <input type='text' 
+                        onChange={(e)=>{setTransport_sec(e.target.value)}} />    
+                        <label>Immatriculation</label>
+                        <input type='text' 
+                        onChange={(e)=>{setVoiture_id(e.target.value)}} />
+                        <div className='btn-div-modal'>
+                        <button className='btn-modal' type='submit'  onClick={()=>handleSubmit( )}>Ajouter</button>
+                        </div>                                  
+                    </form>
+             </div>
+        </div>  
+        <img src={plant} className='plant2 plant-sec plant-sec2'/>         
+        </div>
+                     
     </>
   )
 }

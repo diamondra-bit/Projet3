@@ -24,3 +24,133 @@
     border-radius: 20px;
     margin: 9em 0 0 2em
 }
+
+/*-----SecuriteHome2-----*/
+.carte1{
+    width: 30%;
+    height: 28em;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(7, 113, 145, 0.3); 
+}
+.choice{
+    display: flex;
+    justify-content: space-around;
+    width: 85%;
+    margin: 6em auto ;
+}
+
+.choice-image{
+    width: 12em;
+    margin-top: 2.5em;
+    margin-left: 5em;
+}
+.choice-image2{
+    width: 14em;
+    margin-top: 0.5em;
+    margin-left: 4em;
+}
+.choice-image3{
+    width: 18em;
+    margin-top: 2.1em;
+    margin-left: 2em;
+}
+.choice-text{
+    width: 75%;
+    margin: 2.5em auto;
+    text-align: center;
+    line-height: 1.5em;
+    color: #032d42;
+}
+.choice-btn{
+    background-color: #054d63;
+   padding: 10px 20px;
+    color: white;
+    font-size: 1em;
+    border: none;
+    text-decoration: none;
+    position: relative;
+    top: 1.5em;
+    left: 0.1em;
+}
+
+/*-----EntreeSec2*/
+.personal-carte{
+    width: 40%;
+    height: 30em;
+    margin: -4.5em auto;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(7, 113, 145, 0.3); 
+}
+.carte-sortie{
+    height: 37em;
+    margin: -8em auto;
+}
+.personal-carte h2{
+    width: 69%;
+    color: #077191;
+    margin: 0em auto;
+    padding-top: 1.2em;
+    padding-bottom: 1em;
+}
+
+.plant-sec{
+    margin-top:-19em;
+    margin-left: 2.5em;
+}
+.plant-sec2{
+    margin-top:-16em;
+
+}
+
+
+/*SortieSec2*/
+.sortieSec{
+    padding: 5px 30px;
+    width: 90%;
+    background-color: #fff;
+    margin: 2em auto;
+}
+.title-sortie-sec{
+    text-align: center;
+}
+.ligne-sortie{
+    width: 12em;
+    background-color:#077191 ;
+    height: 0.1em;
+    margin-left: 42%;
+    margin-bottom: 3em;
+}
+.sortieSec td{
+    text-align: center;
+    padding-left: -1em;
+}
+
+/*SecuriteHome2
+
+.shape{
+    width: auto;
+    height: 12em;
+    background-color: #053f5c;
+}
+
+.triangle{
+    width: 25em;
+    height: 15em;
+    border-bottom-left-radius: 60%;
+    border-bottom-right-radius: 70%;
+  background-color: #053f5c;
+  margin-top: -5em;
+  margin-right: -10em;
+}
+
+  .courbe {
+    width: 300px;
+    height: 100px;
+    background: #053f5c;   
+    border: none;
+    border-radius: 100px 100px 0 0; 
+    transform: rotate(180deg);
+    border-bottom-left-radius:20px ;
+  }
+
+*/
