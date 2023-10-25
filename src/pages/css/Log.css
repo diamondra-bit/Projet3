@@ -87,7 +87,11 @@ input:placeholder-shown{
 }
 .main{
     width: 15em;
-transform: translate(6em,-2em);
+    transform: translate(6em,-2em);
+    -webkit-transform: translate(6em,-2em);
+    -moz-transform: translate(6em,-2em);
+    -ms-transform: translate(6em,-2em);
+    -o-transform: translate(6em,-2em);
 }
 
 .text{
