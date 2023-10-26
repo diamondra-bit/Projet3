@@ -28,7 +28,7 @@ function SecuriteHome2() {
                 <div className='carte1'>
                 <img src={img3} className='choice-image3'/>
                     <div className='choice-text'>
-                         <div>  Veuillez confirmez la sorties de vos matériels personnels</div>
+                         <div>  Veuillez confirmez la sorties des matériels de bureau</div>
                         <Link className='choice-btn' to="/Sec2Affichage" >Entrer</Link> 
                     </div>
                 </div>

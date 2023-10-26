@@ -33,6 +33,24 @@ create table sortie (
     etat_sortie VARCHAR(100)
 )
 
+/*Tables entrées de matériels presonnels*/
+CREATE TABLE entreePersonnel(
+    id_ent_pers INT (100) AUTO_INCREMENT PRIMARY KEY,
+    id varchar(100),
+    nom_mat VARCHAR(100),
+    nom_responsable VARCHAR(100),
+    departement VARCHAR(100),
+    date_ent VARCHAR(100)
+)
+
+CREATE TABLE sortiePersonnel(
+    id_sort_pers INT (100) AUTO_INCREMENT PRIMARY KEY,
+    nom_mat VARCHAR(100),
+    nom_responsable VARCHAR(100),
+    departement VARCHAR(100),
+    date_sort VARCHAR(100)
+)
+
 /*Transférer les données de la table entrées vers la table sortie*/
 insert into sortie(nom_sort,nbr_sort,heure_sort,id) 
 select nom_ent,nbr_ent,heure_ent,id from entree where id_ent=2;

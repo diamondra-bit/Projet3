@@ -76,14 +76,14 @@
 /*-----EntreeSec2*/
 .personal-carte{
     width: 40%;
-    height: 30em;
-    margin: -4.5em auto;
+    height: 32em;
+    margin: -6.5em auto;
     background-color: #fff;
     box-shadow: 5px 5px 10px rgba(7, 113, 145, 0.3); 
 }
 .carte-sortie{
-    height: 37em;
-    margin: -8em auto;
+    height: 36.5em;
+    margin: -9em auto;
 }
 .personal-carte h2{
     width: 69%;
@@ -94,7 +94,7 @@
 }
 
 .plant-sec{
-    margin-top:-19em;
+    margin-top:-17.5em;
     margin-left: 2.5em;
 }
 .plant-sec2{

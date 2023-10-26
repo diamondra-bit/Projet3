@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../PageDepot/CssDepot/Connection.css'
+import '../pagesDepot/cssDepot/connection.css'
 
 
 function Connection() {

@@ -45,7 +45,8 @@ function Entree({numero}) {
 
       /*Insérer les matériaux*/
           const handleSubmit= (event)=>{
-            axios.post("http://192.168.100.48:3003/insert",{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
+            axios.post("http://192.168.100.48:3003/insert"
+            ,{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
             .catch(err => console.log(err))
         
           /*const href = '/Entree';

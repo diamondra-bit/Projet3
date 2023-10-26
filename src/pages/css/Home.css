@@ -210,8 +210,9 @@ input[type="checkbox"]{
     color:var(--title-card1);
 }
 .title-card3{
-    margin: 2em ;
-    margin-left: -22em;
+    width: 12em;
+    margin: 2em;
+    margin-left: -1.8em;
     color: var(--title-card3);
     text-transform: uppercase;
     font-weight: 350;
