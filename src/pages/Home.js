@@ -11,7 +11,6 @@ import axios from 'axios'
 import {format} from 'date-fns'
 import { Chart } from 'chart.js/auto';
 
-import { useLocation } from 'react-router-dom';
 
 function Home() {
   const [list,setList]=useState([]);

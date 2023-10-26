@@ -37,13 +37,13 @@ function EntreeSec2() {
                 <div className='form-add'>
                 <form onSubmit={handleSubmit}>
                     <label>Numéro utilisateur</label>
-                    <input type='text' onChange={(event)=>{setId(event.target.value)}}/>
+                    <input type='text' className='input-sec' onChange={(event)=>{setId(event.target.value)}}/>
                     <label>Nom du responsable</label>
-                    <input type='text' onChange={(event)=>{setNomRes(event.target.value)}} />     
+                    <input type='text' className='input-sec' onChange={(event)=>{setNomRes(event.target.value)}} />     
                     <label>Département</label>
-                    <input type='text' onChange={(event)=>{setDepartement(event.target.value)}}/>
+                    <input type='text' className='input-sec' onChange={(event)=>{setDepartement(event.target.value)}}/>
                     <label>Nom matériel</label>
-                    <input type='text' onChange={(event)=>{setNomMat(event.target.value)}}/>
+                    <input type='text' className='input-sec' onChange={(event)=>{setNomMat(event.target.value)}}/>
                     
                    
                 <div className='btn-div-modal'>

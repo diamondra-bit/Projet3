@@ -14,15 +14,15 @@ function Sec2Affichage() {
                 <div className='form-add'>
                   <form>
                       <label>Numéro du matériel</label>
-                         <input type='number' />
+                         <input type='number' className='input-sec'/>
                       <label>Numéro du responsable du transport</label>
-                          <input type='number' />
+                          <input type='number' className='input-sec' />
                       <label>Nom du responsable du transport</label>
-                          <input type='text'/>
+                          <input type='text' className='input-sec'/>
                       <label>Moyens de transport</label>
-                          <input type='text' />    
+                          <input type='text'  className='input-sec'/>    
                       <label>Immatriculation</label>
-                          <input type='text' />
+                          <input type='text'  className='input-sec'/>
                       <div className='btn-div-modal'>
                           <button className='btn-modal' type='submit'  >Ajouter</button>
                       </div>

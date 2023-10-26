@@ -1,6 +1,17 @@
+:root{
+--div-table-container2:#ffffff8f;
+--thead:#fff;
+}
+
+[data-theme="dark"]{
+    --div-table-container2:#1b223299;
+    --thead:linear-gradient(to top,#1aa7ec,#4adede);
+}
+
 .table-container2{
     width: 165em;
     margin: 20px;
+    
 }
 .th-numero-mat{
     width: 0;
@@ -14,14 +25,13 @@
 }
 .thead{
     color:#053f5c ;
-    background-color: #fff;
+    background: var(--thead);
 
 }
 .div-table-container2{
     width: 168em;
-    background-color:#e3e8f0;
+    background-color:var(--div-table-container2);
     padding: 20px ;
-    border-radius: 20px;
     margin: 9em 0 0 2em
 }
 
@@ -124,7 +134,17 @@
     text-align: center;
     padding-left: -1em;
 }
-
+.theadSec{
+    background: #053f5c;
+    color: #fff;
+}
+.tableSec{
+    color: #032d42;
+}
+ 
+.input-sec{
+    margin-left: -1.2em;
+}
 /*SecuriteHome2
 
 .shape{

@@ -5,6 +5,7 @@ import {format} from 'date-fns'
 import axios from 'axios';
 import search from '../pages/images/search.svg'
 import '../pages/css/Sortie.css'
+import DarkNotif from '../components/Acceuil/DarkNotif';
 
 function Sortie() {
   const [list,setList]=useState([]);
@@ -26,7 +27,8 @@ function Sortie() {
     <div className='container-home'>
         <div className='navbar'><Navbar/></div>
 
-        <div><Darkmode/>
+        <div>
+          <DarkNotif/>
         <div className='container-inline'>
 
             <div className='inline-add'>

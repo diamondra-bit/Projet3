@@ -16,6 +16,7 @@ import SecuriteAffichage from './pages/SEcurité/SecuriteAffichage.js';
 import EntreeSec2 from './pages/SEcurité/EntreeSec2';
 import SortieSec2 from './pages/SEcurité/SortieSec2';
 import Sec2Affichage from './pages/SEcurité/Sec2Affichage';
+import Test from './components/Test';
 
 
 
@@ -47,6 +48,9 @@ function App() {
 
         <Route path='/LoginDepot' element={<LoginDepot/>}></Route>
         <Route path='/EnregistremetsDepot' element={<EnregistrementsDepot/>}></Route>
+
+
+        <Route path='/Test' element={<Test/>}></Route>
       </Routes>
     </BrowserRouter>
 

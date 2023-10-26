@@ -2,12 +2,14 @@ import React, { useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Acceuil/Navbar'
-import Darkmode from '../components/Acceuil/Darkmode'
+import NavbarHorizontal from '../components/Acceuil/NavbarHorizontal'
+
 import axios from 'axios';
 import {format} from 'date-fns'
 import '../pages/css/Entree.css'
 import add from '../pages/images/add.svg'
 import search2 from '../pages/images/search.svg'
+import DarkNotif from '../components/Acceuil/DarkNotif';
 
 function Entree({numero}) {
 
@@ -131,7 +133,7 @@ function Entree({numero}) {
       <div  className='navbar'> <Navbar/></div>
 
       <div>
-            <Darkmode/> 
+      <DarkNotif/>
 
             {/*Section 1*/}
             <div className='container-inline'>
@@ -177,7 +179,7 @@ function Entree({numero}) {
 
             {/* Sans Searchbar par défaut */}
               {search&&(
-                  <table>
+                  <table >
                     <thead>
                       <tr>
                       <th>Nom du matériel</th>

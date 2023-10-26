@@ -22,8 +22,8 @@ function SortieSec2() {
       <h2 className='title title-sortie-sec'>Liste de vos matériels personnels</h2>
       <div className='ligne-sortie'></div>
       <div className='sortieSec'>
-        <table>
-          <thead>
+        <table >
+          <thead className='theadSec'>
             <tr>
               <th>Date</th>
               <th>Heure</th>
@@ -37,12 +37,12 @@ function SortieSec2() {
             {
               list.map((val)=>(
                 <tr>
-              <td>{format(new Date(val.date_ent),'dd-MM-yyyy')}</td>
-              <td>{format(new Date(val.date_ent),'HH:mm')}</td>
-              <td>{val.id}</td>
-              <td>{val.nom_responsable}</td>
-              <td>{val.nom_mat}</td>
-              <td>{val.departement}</td>
+              <td className='tableSec'>{format(new Date(val.date_ent),'dd-MM-yyyy')}</td>
+              <td className='tableSec'>{format(new Date(val.date_ent),'HH:mm')}</td>
+              <td className='tableSec'>{val.id}</td>
+              <td className='tableSec'>{val.nom_responsable}</td>
+              <td className='tableSec'>{val.nom_mat}</td>
+              <td className='tableSec'>{val.departement}</td>
             </tr>
               ))
             }

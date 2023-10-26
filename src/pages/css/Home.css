@@ -70,6 +70,11 @@
     width: 2em;
     margin-top: -5.3em;
 }
+.notif2{
+    width: 2em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
 .utilisateur{
     margin-top: 1em;
     margin-left: 2.5em;
@@ -118,6 +123,9 @@
 .container-home{
     background-color: var(--body_background2);
     display: flex;
+    width: 100%;
+    overflow-x: auto; 
+    overflow-y: hidden;
 }
 
 .container-home2{

@@ -1,7 +1,7 @@
 :root{
     --container-inline:#fff;
     --title-material: #053f5c;
-    --tbody: #e7ecf8;
+    --tbody: #a1d7f72c;
     --tr:#fff;
     --th: #053f5c;
     --button-entree: #a1d7f72c;
@@ -13,13 +13,12 @@
 [data-theme="dark"]{
     --container-inline:#1b223299;
     --title-material:rgba(255, 255, 255, 0.8);
-    --tr:#282a2b2c;
+    --tr:#a1d7f72c;
     --th:#4adede;
     --button-entree:linear-gradient(to right,#1aa7ec,#4adede);
     --button-sortir: linear-gradient(to right,#1aa7ec,#4adede);
     --text-head:#0d0c42a6;
     --td:#ffffffb9;
-    --tbody: #053f5c;
 }
 .button-div{
     width: 95%;

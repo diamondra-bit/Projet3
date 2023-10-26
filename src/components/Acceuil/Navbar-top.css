@@ -1,5 +1,15 @@
+:root{
+--navbar-top:#053f5c;
+--navbar-titre:#fff;
+}
+
+[data-theme="dark"]{
+    --navbar-top:linear-gradient(to top,#1aa7ec,#4adede);
+    --navbar-titre:#053f5c;
+}
+
 .navbar-top{
-    background-color: #053f5c;
+    background: var(--navbar-top);
     width: 140em;
     height: 5em;
     position: fixed;
@@ -7,7 +17,7 @@
     margin-bottom: 5em;
 }
 .navbar-titre{
-    color: #fff;
+    color:var(--navbar-titre) ;
     padding: 2em 1em;
     font-size: 1em;
     text-transform: uppercase;
