@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import {Bar} from 'react-chartjs-2'
 import Navbar from '../components/Acceuil/Navbar'
 import NavbarHorizontal from '../components/Acceuil/NavbarHorizontal'
@@ -10,6 +10,7 @@ import '../pages/css/Home.css'
 import axios from 'axios'
 import {format} from 'date-fns'
 import { Chart } from 'chart.js/auto';
+import AuthContext from '../components/store/authContext'
 
 
 function Home() {
@@ -79,7 +80,7 @@ function Home() {
     countSortie(); 
    },[])
 
-  
+   const authContext = useContext(AuthContext);
  
   return (
     <>
@@ -89,7 +90,10 @@ function Home() {
       </div>
 
       <div>
-            <NavbarHorizontal/>  
+            <NavbarHorizontal/>     
+      <div>
+      
+    </div>
 
             <div className='main-card'>
               <div className='card card1'>
