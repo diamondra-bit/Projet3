@@ -21,14 +21,14 @@ function SecuriteHome2() {
                 <div className='carte1'>
                     <img src={img2} className='choice-image2'/>
                     <div className='choice-text'>
-                         <div>  Veuillez confirmez la sorties de vos matériels personnels</div>
+                         <div>  Veuillez confirmez la sortie de vos matériels personnels</div>
                         <Link className='choice-btn' to="/SortieSec2" >Entrer</Link> 
                     </div>
                 </div>
                 <div className='carte1'>
                 <img src={img3} className='choice-image3'/>
                     <div className='choice-text'>
-                         <div>  Veuillez confirmez la sorties des matériels de bureau</div>
+                         <div>  Veuillez confirmez la sortie des matériels de bureau</div>
                         <Link className='choice-btn' to="/Sec2Affichage" >Entrer</Link> 
                     </div>
                 </div>

@@ -121,7 +121,7 @@ function Home() {
               list.map((val,key)=>(
                 <div className='history-entree'>  
                   <div className='history-nom history1' >{val.nom_ent}</div>     
-                  <div  className='history-nom history1' >{val.nbr_ent}</div>     
+    
                   <div  className='history-nom history1'  >{format(new Date(val.heure_ent),'dd-MM-yyyy')}</div>
                   < div  className='history-nom history1' >{format(new Date(val.heure_ent),'HH:mm')}</div>
                   <div  className='history-nom history1' >{val.lastname}</div>   

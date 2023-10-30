@@ -16,6 +16,15 @@ function SortieSec2() {
   listMateriel();
   },[])
 
+  const handleSortie=(id)=>{
+    axios.post(`http://192.168.100.48:3003/insertSortiePers/${id}`)
+    axios.put(`http://192.168.100.48:3003/deleteSortiePers/${id}`)
+    .then(()=>{
+      window.location.reload();
+    })
+
+  }
+
   return (
     <>
       <div className='container'>
@@ -31,6 +40,7 @@ function SortieSec2() {
               <th>Nom Responsable</th>
               <th>Matériels</th>
               <th>Département</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +53,9 @@ function SortieSec2() {
               <td className='tableSec'>{val.nom_responsable}</td>
               <td className='tableSec'>{val.nom_mat}</td>
               <td className='tableSec'>{val.departement}</td>
+              <td className='tableSec'>
+              <button className='btn-sortir' onClick={()=>handleSortie(val.id_ent_pers)}>Sortir</button>  
+              </td>
             </tr>
               ))
             }

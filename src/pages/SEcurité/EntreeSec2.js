@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import plant from '../../pages/images/plant.svg'
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function EntreeSec2() {
     const [id,setId]=useState("");
@@ -9,6 +10,7 @@ function EntreeSec2() {
     const [nomRes,setNomRes]=useState(""); 
     const [departement,setDepartement]=useState(""); 
     const [currentDate,setCurrentDate]=useState(new Date());
+    const navigate=useNavigate();
 
     /*Recuperer la date d'entrée*/
     useEffect( ()=>{
@@ -23,6 +25,7 @@ function EntreeSec2() {
     axios.post("http://192.168.100.48:3003/entreePers",
     {id:id,nomMat:nomMat,nomRes:nomRes,departement:departement,date_ent:currentDate})
     .catch(err=>console.log(err));
+    navigate('/SortieSec2')
     }
 
   return (

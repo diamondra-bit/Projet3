@@ -45,6 +45,8 @@ CREATE TABLE entreePersonnel(
 
 CREATE TABLE sortiePersonnel(
     id_sort_pers INT (100) AUTO_INCREMENT PRIMARY KEY,
+   id_ent_pers INT (100) ,
+    id varchar(100),
     nom_mat VARCHAR(100),
     nom_responsable VARCHAR(100),
     departement VARCHAR(100),
