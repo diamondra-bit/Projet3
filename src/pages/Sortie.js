@@ -28,7 +28,9 @@ function Sortie() {
         <div className='navbar'><Navbar/></div>
 
         <div>
-          <DarkNotif/>
+        <div className='darknotif-top'>
+        <DarkNotif/>
+        </div>
         <div className='container-inline'>
 
             <div className='inline-add'>

@@ -4,8 +4,9 @@ import notif from '../../pages/images/notif.svg'
 import Darkmode from './Darkmode'
 import axios from 'axios';
 import AuthContext from '../store/authContext';
+import DarkNotif from './DarkNotif';
 
-function NavbarHorizontal() {
+function NavbarHorizontal(show) {
   const [firstName, setFirstName] = useState(null);
   const [lastname, setLastname] = useState(null);
   const authContext = useContext(AuthContext);
@@ -32,20 +33,23 @@ function NavbarHorizontal() {
     <>
         <div className='navbar-horizontal'>
           <div className='utilisateur' >
-              <div className='cercle-utilisateur'></div>  
-              <div className='texte-utilisateur'>Bienvenue , <span className='nom-utilisateur'>
-                {firstName ? (
-                    <p>{firstName} {lastname}</p>
-                  ) : (
-                    <p></p>
-                  )}
-      </span> </div>  
+           
+              {show &&
+              <div>
+               
+                  <div className='texte-utilisateur'>Bienvenue , <span className='nom-utilisateur'>
+                  {firstName ? (
+                      <p>{firstName} {lastname}</p>
+                    ) : (
+                      <p></p>
+                    )}
+                  </span> </div>  
+                  </div>   }
+                
           </div>  
           
-          <div className='navbar-flex'>
-              <Darkmode/>  
-              <img src={notif} className='notif'/>           
-          </div> 
+             <DarkNotif/>        
+         
       </div> 
     </>
   )

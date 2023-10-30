@@ -157,3 +157,7 @@ td{
 tr:nth-child(even){
     background: var(--tr);
 }
+.darknotif-top{
+    margin-top: 1em;
+    margin-right: 0.7em;
+}

@@ -25,6 +25,48 @@
     --utilisateur:#2faaaa;
     --utilisateur2:#4adede;
 }
+/*Notif*/
+.div-notif-show{
+    z-index: 6;
+    position: absolute;
+}
+.notif-show{
+    width: 15em;
+    height: auto;
+    margin-left: -13.5em;
+    margin-top: -1em;
+    background-color: #053f5c;
+    padding: 20px;
+    line-height: 1.5em;
+    color: white;
+    padding-bottom: 30px;
+    border: 1px solid white;
+}
+
+.settings{
+    display: flex;
+}
+.notif2{
+    width: 2em;
+    margin-top: 0.8em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    position: relative;
+}
+.counter{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 0.8em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 1.7em;
+    right: 31px;
+}
 
 /*Darkmode*/
 .button{
@@ -66,15 +108,7 @@
     justify-content: space-between;
     float: right;
 }
-.notif{
-    width: 2em;
-    margin-top: -9em;
-}
-.notif2{
-    width: 2em;
-    margin-top: 1em;
-    margin-bottom: 2em;
-}
+
 .utilisateur{
     margin-top: 1em;
     margin-left: 2.5em;
@@ -85,7 +119,6 @@
     font-weight: 700;
 }
 .texte-utilisateur{
-    margin-top: 2em;
     margin-bottom: 1em;
     color:  var(--utilisateur2);
     font-weight: 500;

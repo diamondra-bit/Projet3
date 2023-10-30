@@ -1,5 +1,11 @@
 import React, { useEffect, useState,useContext } from 'react'
 import {Bar} from 'react-chartjs-2'
+import axios from 'axios'
+import {format} from 'date-fns'
+import { Chart } from 'chart.js/auto';
+import AuthContext from '../components/store/authContext'
+
+
 import Navbar from '../components/Acceuil/Navbar'
 import NavbarHorizontal from '../components/Acceuil/NavbarHorizontal'
 
@@ -7,15 +13,14 @@ import monitor from '../pages/images/utilisateur.svg'
 import input from '../pages/images/in.svg'
 import out from '../pages/images/out.svg'
 import '../pages/css/Home.css'
-import axios from 'axios'
-import {format} from 'date-fns'
-import { Chart } from 'chart.js/auto';
-import AuthContext from '../components/store/authContext'
+
 
 
 function Home() {
   const [list,setList]=useState([]);
   const [list2,setList2]=useState([]);
+  const authContext = useContext(AuthContext);
+
 
   /*Afficher l'historique des entrées de matériaux*/
   useEffect(()=>{
@@ -80,7 +85,7 @@ function Home() {
     countSortie(); 
    },[])
 
-   const authContext = useContext(AuthContext);
+
  
   return (
     <>
@@ -90,7 +95,7 @@ function Home() {
       </div>
 
       <div>
-            <NavbarHorizontal/>     
+            <NavbarHorizontal show={true} />     
       <div>
       
     </div>

@@ -1,15 +1,18 @@
 import React, { useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 import Navbar from '../components/Acceuil/Navbar'
 import NavbarHorizontal from '../components/Acceuil/NavbarHorizontal'
+import DarkNotif from '../components/Acceuil/DarkNotif';
 
 import axios from 'axios';
 import {format} from 'date-fns'
+
 import '../pages/css/Entree.css'
 import add from '../pages/images/add.svg'
 import search2 from '../pages/images/search.svg'
-import DarkNotif from '../components/Acceuil/DarkNotif';
+
 
 function Entree({numero}) {
 
@@ -24,6 +27,7 @@ function Entree({numero}) {
   const [currentDate2,setCurrentDate2]=useState(new Date());
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
+
 
  
 
@@ -97,8 +101,13 @@ function Entree({numero}) {
             axios.put(`http://192.168.100.48:3003/updateEtat/${idsel}`)
             axios.put(`http://192.168.100.48:3003/decrementer/${idsel}`)
             .catch(err=>console.log(err))
+
             navigate('/Sortie');
           }
+
+        
+        
+          
 
       /*Search*/
           const [texte, setTexte] = useState("");
@@ -133,7 +142,11 @@ function Entree({numero}) {
       <div  className='navbar'> <Navbar/></div>
 
       <div>
-      <DarkNotif/>
+        <div className='darknotif-top'>
+        <DarkNotif />
+
+        </div>
+ 
 
             {/*Section 1*/}
             <div className='container-inline'>
