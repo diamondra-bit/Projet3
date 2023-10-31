@@ -33,22 +33,24 @@ function Darkmode() {
      
     };
   }, [authContext.userId]);
+
+  /*Socket*/
   const [notifications, setNotifications] = useState([]);
   const socket = io('http://localhost:5000');
    const [notification, setNotification] = useState('');
 
   useEffect(() => {
     socket.on('notification', (data) => {
-      setNotification(data.message);
+      setNotifications([...notifications, data.message]);
     });
 
     return () => {
       socket.off('notification');
     };
-  }, []);
+  }, [notifications]);
 
   const triggerNotification = () => {
-    const username = 'UtilisateurExemple'; // Remplacez par le nom de l'utilisateur
+  // Remplacez par le nom de l'utilisateur
     socket.emit('trigger-notification', username);
   };
 
@@ -90,14 +92,12 @@ function Darkmode() {
           {show && (
             <div className="div-notif-show">
               <div className="notif-show">
-                <p>{notification}</p>
-                {/* 
-                <ul>
-                  {
-                  notifications.map((notification, index) => (
-                    <li key={index}>fd{notification}</li>
+              <ul>
+                  {notifications.map((notification, index) => (
+                    <li key={index}>{notification}</li>
                   ))}
-                </ul>*/}
+              </ul>
+
               </div>
             </div>
           )}

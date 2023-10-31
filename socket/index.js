@@ -17,7 +17,7 @@ io.on('connection', (socket) => {
   });
 
    socket.on('trigger-notification', (username) => {
-    io.emit('notification', { message: `${username} a déclenchée une nouvelle notification !` });
+    io.emit('notification', { message: `${username} a effectué une nouvelle sortie !` });
   })
 
 });
