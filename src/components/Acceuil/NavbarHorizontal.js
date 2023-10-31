@@ -37,7 +37,7 @@ function NavbarHorizontal(show) {
               {show &&
               <div>
                
-                  <div className='texte-utilisateur'>Bienvenue , <span className='nom-utilisateur'>
+                  <div className='texte-utilisateur'>Bienvenue ! <span className='nom-utilisateur'>
                   {firstName ? (
                       <p>{firstName} {lastname}</p>
                     ) : (

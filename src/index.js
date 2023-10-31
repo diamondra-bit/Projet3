@@ -4,16 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './components/store/authContext';
+import { NotifProvider } from './components/store/NotifContext';
 //import 'bootstrap/dist/css/bootstrap.min.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-    <AuthContextProvider>
-        <App />
-    </AuthContextProvider>
-    
+<AuthContextProvider>
+  <NotifProvider>
+    <App />
+  </NotifProvider>
+</AuthContextProvider>
+
   </React.StrictMode>
 );
 

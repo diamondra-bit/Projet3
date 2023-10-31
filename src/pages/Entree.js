@@ -8,6 +8,8 @@ import DarkNotif from '../components/Acceuil/DarkNotif';
 
 import axios from 'axios';
 import {format} from 'date-fns'
+import { io } from "socket.io-client";
+import { useNotification } from '../components/store/NotifContext';// Importez le contexte
 
 import '../pages/css/Entree.css'
 import add from '../pages/images/add.svg'
@@ -28,10 +30,24 @@ function Entree({numero}) {
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
 
+  /*const { setNotification } = useNotification(); // Récupérez la fonction de mise à jour depuis le contexte
 
+  const socket = io('http://localhost:5000'); // Remplacez l'URL par celle de votre serveur WebSocket
  
+  useEffect(() => {
 
-      /*Recuperer la date d'entrée*/
+   socket.on('notification', (data) => {
+     setNotification(data.message);
+   });
+
+   return () => {
+     socket.disconnect();
+   };
+ }, []);*/
+
+
+
+  /*Recuperer la date d'entrée*/
           useEffect( ()=>{
             const intervalId= setInterval(()=>{
               setCurrentDate(new Date());
@@ -92,6 +108,7 @@ function Entree({numero}) {
      /*Transférer données vers Sortie*/
           const handleUpdate=(idsel)=>{
             toggleModal2();
+         /*   setNotification('Nouvelle notification  ooo !');*/
 
             axios.post(`http://192.168.100.48:3003/insertSortie/${idsel}`)
             axios.put(`http://192.168.100.48:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
@@ -104,10 +121,6 @@ function Entree({numero}) {
 
             navigate('/Sortie');
           }
-
-        
-        
-          
 
       /*Search*/
           const [texte, setTexte] = useState("");
@@ -132,12 +145,9 @@ function Entree({numero}) {
            /*   window.location.reload();*/
           }
 
-   
-           
-
   return (
     <>
-    
+
     <div className='container-home ' >
       <div  className='navbar'> <Navbar/></div>
 
