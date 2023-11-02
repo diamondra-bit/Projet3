@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, forwardRef, useImperativeHandle  } from 'react';
+import { Link } from 'react-router-dom';
 import notif from '../../pages/images/notif.svg';
 import { io } from 'socket.io-client';
 import AuthContext from '../store/authContext';
 import axios from 'axios';
 
-function Darkmode() {
+function Darkmode(props, ref) {
   const [show, setShow] = useState(false);
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
@@ -79,6 +80,9 @@ function Darkmode() {
 
     socket.emit('trigger-notification', username);
   };
+  useImperativeHandle(ref, () => ({
+    triggerNotification
+  }));
 
 
 
@@ -105,7 +109,7 @@ function Darkmode() {
 
   return (
     <>
-      <button onClick={triggerNotification}>icu</button>
+   
       <div className="settings">
         <div>
           <input type="checkbox" id="check" onChange={toggleTheme} />
@@ -123,7 +127,11 @@ function Darkmode() {
               {unreadNotifications.map((notification, index) => (
                 <li key={index}>
                   {notification.message}
-                  <button onClick={() => markAsRead(index)}>Marquer comme lu</button>
+                  <div className='notif-read'>
+                      <button className='btn-read' onClick={() => markAsRead(index)}>Marquer comme lu</button>
+                      <Link className='link-read' to="/SecuriteAffichage" onClick={() => markAsRead(index)}>Voir</Link>
+                  </div>
+                
                 </li>
               ))}
             </ul>
@@ -138,4 +146,4 @@ function Darkmode() {
   );
 }
 
-export default Darkmode;
+export default forwardRef(Darkmode);

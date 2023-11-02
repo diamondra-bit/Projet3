@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react'
+import React, { useState,useEffect,useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ import { useNotification } from '../components/store/NotifContext';// Importez l
 import '../pages/css/Entree.css'
 import add from '../pages/images/add.svg'
 import search2 from '../pages/images/search.svg'
+import Darkmode from '../components/Acceuil/Darkmode';
 
 
 function Entree({numero}) {
@@ -44,6 +45,14 @@ function Entree({numero}) {
      socket.disconnect();
    };
  }, []);*/
+
+ const darkModeRef = useRef(null);
+
+const triggerNotificationInDarkmode = () => {
+  if (darkModeRef.current) {
+    darkModeRef.current.triggerNotification();
+  }
+}
 
 
 
@@ -147,13 +156,13 @@ function Entree({numero}) {
 
   return (
     <>
-
+<button onClick={triggerNotificationInDarkmode}>Ici </button>
     <div className='container-home ' >
       <div  className='navbar'> <Navbar/></div>
 
       <div>
         <div className='darknotif-top'>
-        <DarkNotif />
+        <Darkmode  ref={darkModeRef}/>
 
         </div>
  
