@@ -53,7 +53,8 @@ function Darkmode() {
   useEffect(() => {
 
     socket.on('notification', (data) => {
-      const newNotifications = [...localNotifications, data.message];
+      const newNotification = { message: data.message, status: 'unread' };
+      const newNotifications = [...localNotifications, newNotification];
       setLocalNotifications(newNotifications);
       // Enregistrez également ces nouvelles notifications dans le stockage local
       localStorage.setItem('notifications', JSON.stringify(newNotifications));
@@ -64,6 +65,16 @@ function Darkmode() {
     };
   }, [localNotifications]);
 
+  const markAsRead = (index) => {
+    const updatedNotifications = [...localNotifications];
+    updatedNotifications.splice(index, 1); 
+    setLocalNotifications(updatedNotifications);
+
+    localStorage.setItem('notifications', JSON.stringify(updatedNotifications));
+  };
+
+  const unreadNotifications = localNotifications.filter((notification) => notification.status === 'unread');
+  
   const triggerNotification = () => {
 
     socket.emit('trigger-notification', username);
@@ -103,15 +114,20 @@ function Darkmode() {
 
         <div>
           <img src={notif} className="notif2" onClick={showNotif} />
-          <div className="counter">{localNotifications.length}</div>
+          <div className="counter">{unreadNotifications.length}</div>
           {show && (
             <div className="div-notif-show">
               <div className="notif-show">
+
               <ul>
-        {localNotifications.map((notification, index) => (
-          <li key={index}>{notification}</li>
-        ))}
-      </ul>
+              {unreadNotifications.map((notification, index) => (
+                <li key={index}>
+                  {notification.message}
+                  <button onClick={() => markAsRead(index)}>Marquer comme lu</button>
+                </li>
+              ))}
+            </ul>
+
 
               </div>
             </div>
