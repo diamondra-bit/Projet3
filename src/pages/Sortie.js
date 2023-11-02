@@ -46,6 +46,7 @@ function Sortie() {
           <div className='table-container'>
           <table>
             <thead>
+            <th>Id du matériel</th>
               <th>Nom du matériel</th>
               <th>Date de sortie</th>
               <th >Heure de sortie</th>
@@ -57,6 +58,7 @@ function Sortie() {
               {
                list.map((val)=>(
                 <tr>
+                   <td className='td-id td-nom'>{val.id_ent}</td>
                   <td className='td-id td-nom'>{val.nom_sort}</td>
                   <td className='td-heure'>{format(new Date(val.heure_sort),'dd-MM-yyyy')}</td>
                   <td className='td-sortie'>{format(new Date(val.heure_sort),'HH:mm')}</td>

@@ -77,7 +77,6 @@ function Darkmode(props, ref) {
   const unreadNotifications = localNotifications.filter((notification) => notification.status === 'unread');
   
   const triggerNotification = () => {
-
     socket.emit('trigger-notification', username);
   };
   useImperativeHandle(ref, () => ({

@@ -31,31 +31,6 @@ function Entree({numero}) {
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
 
-  /*const { setNotification } = useNotification(); // Récupérez la fonction de mise à jour depuis le contexte
-
-  const socket = io('http://localhost:5000'); // Remplacez l'URL par celle de votre serveur WebSocket
- 
-  useEffect(() => {
-
-   socket.on('notification', (data) => {
-     setNotification(data.message);
-   });
-
-   return () => {
-     socket.disconnect();
-   };
- }, []);*/
-
- const darkModeRef = useRef(null);
-
-const triggerNotificationInDarkmode = () => {
-  if (darkModeRef.current) {
-    darkModeRef.current.triggerNotification();
-  }
-}
-
-
-
   /*Recuperer la date d'entrée*/
           useEffect( ()=>{
             const intervalId= setInterval(()=>{
@@ -80,14 +55,6 @@ const triggerNotificationInDarkmode = () => {
             ,{nom:nom,nombre:nombre,heure_ent:currentDate,id:id})
             .catch(err => console.log(err))
         
-          /*const href = '/Entree';
-          const dataTheme = event.target.getAttribute('data-theme');
-          alert(dataTheme)
-          
-          if (dataTheme='dark') {
-            navigate(href, { state: { 'data-theme': dataTheme } });
-          }*/
-
           navigate('/Entree');
         }
 
@@ -114,21 +81,30 @@ const triggerNotificationInDarkmode = () => {
             listMateriel();
           },[]);    
    
+      /*Trigger*/
+
+      const darkModeRef = useRef(null);
+
+      const triggerNotificationInDarkmode = () => {
+        if (darkModeRef.current) {
+          darkModeRef.current.triggerNotification();
+        }
+      }
+      
      /*Transférer données vers Sortie*/
           const handleUpdate=(idsel)=>{
             toggleModal2();
-         /*   setNotification('Nouvelle notification  ooo !');*/
-
+            triggerNotificationInDarkmode ();
             axios.post(`http://192.168.100.48:3003/insertSortie/${idsel}`)
             axios.put(`http://192.168.100.48:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
             axios.put(`http://192.168.100.48:3003/updateResponsable/${idsel}`,{uid:uid})
             axios.put(`http://192.168.100.48:3003/updateSec/${idsel}`)
             axios.put(`http://192.168.100.48:3003/updateSec2/${idsel}`)
             axios.put(`http://192.168.100.48:3003/updateEtat/${idsel}`)
-            axios.put(`http://192.168.100.48:3003/decrementer/${idsel}`)
+            axios.put(`http://192.168.100.48:3003/deleteSortie/${idsel}`)
             .catch(err=>console.log(err))
 
-            navigate('/Sortie');
+            
           }
 
       /*Search*/
@@ -156,14 +132,16 @@ const triggerNotificationInDarkmode = () => {
 
   return (
     <>
-<button onClick={triggerNotificationInDarkmode}>Ici </button>
+
     <div className='container-home ' >
       <div  className='navbar'> <Navbar/></div>
 
       <div>
         <div className='darknotif-top'>
-        <Darkmode  ref={darkModeRef}/>
-
+       
+        <div className='navbar-flex'>
+         <Darkmode  ref={darkModeRef}/>     
+          </div> 
         </div>
  
 
@@ -214,6 +192,7 @@ const triggerNotificationInDarkmode = () => {
                   <table >
                     <thead>
                       <tr>
+                      <th>Id du matériel</th>
                       <th>Nom du matériel</th>
                       <th>Date d'entrée</th>
                       <th>Heure d'entrée</th>
@@ -225,11 +204,15 @@ const triggerNotificationInDarkmode = () => {
                       {list.map((val)=>(
                         
                           <tr >
+                             <td>{val.id_ent}</td>
                             <td>{val.nom_ent}</td>  
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                             <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                             <td className='td-responsable'>{val.firstname}   {val.lastname}</td>
-                            <td> <button className='btn-sortir' onClick={toggleModal2} >Sortir</button> </td>
+    {/*Eto lay tsy mety  triggerNotificationInDarkmode();
+    */  }<td> <button className='btn-sortir' onClick=
+                           {toggleModal2} >Sortir</button> 
+                            </td>
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
@@ -242,8 +225,8 @@ const triggerNotificationInDarkmode = () => {
                                               <label>Numéro du responsable de sortie</label>
                                               <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                               <div className='btn-div-modal'>
-                                                <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_ent)}>Ajouter</button>
-                                                <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
+                                              <button className='btn-modal' type='submit' onClick={() => { handleUpdate(val.id_ent); }}>Ajouter</button>
+                                              <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                               </div>
                                            </form>
                                         </div> 
@@ -289,8 +272,9 @@ const triggerNotificationInDarkmode = () => {
                                           <label>Numéro du responsable de sortie</label>
                                           <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                           <div className='btn-div-modal'>
-                                            <button className='btn-modal' type='submit'  onClick={()=>handleUpdate(val.id_sortie)}>Ajouter</button>
-                                            <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
+                                          <button className='btn-modal' type='submit' onClick={() => {
+                                            handleUpdate(val.id_ent);  }}>Ajouter</button>
+                                          <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                           </div>                           
                                       </form>
                                     </div>           
