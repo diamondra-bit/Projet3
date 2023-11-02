@@ -36,21 +36,36 @@ function Darkmode() {
 
   /*Socket*/
   const [notifications, setNotifications] = useState([]);
+  const [localNotifications, setLocalNotifications] = useState([]);
+
   const socket = io('http://localhost:5000');
    const [notification, setNotification] = useState('');
 
+   useEffect(() => {
+    // Au chargement du composant, récupérez les notifications locales
+    const localNotificationsString = localStorage.getItem('notifications');
+    if (localNotificationsString) {
+      const localNotificationsArray = JSON.parse(localNotificationsString);
+      setLocalNotifications(localNotificationsArray);
+    }
+  }, []);
+
   useEffect(() => {
+
     socket.on('notification', (data) => {
-      setNotifications([...notifications, data.message]);
+      const newNotifications = [...localNotifications, data.message];
+      setLocalNotifications(newNotifications);
+      // Enregistrez également ces nouvelles notifications dans le stockage local
+      localStorage.setItem('notifications', JSON.stringify(newNotifications));
     });
 
     return () => {
       socket.off('notification');
     };
-  }, [notifications]);
+  }, [localNotifications]);
 
   const triggerNotification = () => {
-  // Remplacez par le nom de l'utilisateur
+
     socket.emit('trigger-notification', username);
   };
 
@@ -88,15 +103,15 @@ function Darkmode() {
 
         <div>
           <img src={notif} className="notif2" onClick={showNotif} />
-          <div className="counter">{notifications.length}</div>
+          <div className="counter">{localNotifications.length}</div>
           {show && (
             <div className="div-notif-show">
               <div className="notif-show">
               <ul>
-                  {notifications.map((notification, index) => (
-                    <li key={index}>{notification}</li>
-                  ))}
-              </ul>
+        {localNotifications.map((notification, index) => (
+          <li key={index}>{notification}</li>
+        ))}
+      </ul>
 
               </div>
             </div>
