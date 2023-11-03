@@ -4,6 +4,8 @@ import notif from '../../pages/images/notif.svg';
 import { io } from 'socket.io-client';
 import AuthContext from '../store/authContext';
 import axios from 'axios';
+import done from '../../pages/images/done.svg'
+import show2 from '../../pages/images/show.svg'
 
 function Darkmode(props, ref) {
   const [show, setShow] = useState(false);
@@ -127,8 +129,8 @@ function Darkmode(props, ref) {
                 <li key={index}>
                   {notification.message}
                   <div className='notif-read'>
-                      <button className='btn-read' onClick={() => markAsRead(index)}>Marquer comme lu</button>
-                      <Link className='link-read' to="/SecuriteAffichage" onClick={() => markAsRead(index)}>Voir</Link>
+                    <img src={done} onClick={() => markAsRead(index)}/>
+                      <Link to="/Sortie" onClick={() => markAsRead(index)}>   <img src={show2} /></Link>
                   </div>
                 
                 </li>

@@ -38,15 +38,21 @@
     background-color: #053f5c;
     padding: 20px;
     line-height: 1.5em;
-    color: white;
+    color:  #fff;
     padding-bottom: 30px;
-    border: 1px solid white;
+    border: 1px solid #053f5c;
+    box-shadow:5px 5px 15px #505355;
+}
+.notif-show li{
+    list-style: none;
+    margin-left: -1.3em;
 }
 .notif-read{
     display: flex;
     justify-content: space-around;
-    width: 80%;
-    margin: 15px auto 30px;
+    width: 35%;
+    margin: 15px 0 30px;
+    margin-left: 60%;
 }
 .btn-read{
     border: none;

@@ -11,13 +11,14 @@ function Navbartop() {
       <div className='navbar-titre'>Liste des sorties</div>
 
         {/*Barre de recherche*/}
+       
         <div className='search-bar search2'>
                   <div> <input type='text' /></div> 
                   <div  > <img src={search2} className='icone-search'/> </div>
-        </div>
-        <Link to='/Home'><img src={logout} className='icone-search logout'/></Link>
-            
+        </div>  
+       
     </div>
+   
     </>
   )
 }

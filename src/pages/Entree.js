@@ -130,6 +130,7 @@ function Entree({numero}) {
            /*   window.location.reload();*/
           }
 
+       
   return (
     <>
 
@@ -203,7 +204,7 @@ function Entree({numero}) {
                     <tbody>
                       {list.map((val)=>(
                         
-                          <tr >
+                          <tr onClick={handleRowClick}>
                              <td>{val.id_ent}</td>
                             <td>{val.nom_ent}</td>  
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>

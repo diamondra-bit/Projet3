@@ -7,7 +7,9 @@
     --div-table-container2:#1b223299;
     --thead:linear-gradient(to top,#1aa7ec,#4adede);
 }
-
+.securite{
+   height: 40em;
+}
 .table-container2{
     width: 165em;
     margin: 20px;
