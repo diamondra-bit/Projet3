@@ -92,17 +92,30 @@ function Entree({numero}) {
         }
       }
       
+<<<<<<< HEAD
       const [selectid, setSelectid] = useState("");
       const handleRowClick = (id) => {
         console.log(`Ligne cliquée avec ID : ${id}`);
         setSelectid(id); // Mettez à jour l'état avec le nouvel ID
+=======
+      /*Id cliquée*/
+      const handleRowClick = (id) => {
+        console.log(`Ligne cliquée avec ID : ${id}`);
+        setIdsel(id); // Mettez à jour l'état avec le nouvel ID
+>>>>>>> 31ebf6139ea233d78a932b900880f04887962ad3
       };
       
       // Utilisez useEffect pour observer les changements de selectid
       useEffect(() => {
+<<<<<<< HEAD
         console.log(selectid); // Ici, selectid aura la nouvelle valeur
       }, [selectid]);
    
+=======
+        console.log(idsel); // Ici, selectid aura la nouvelle valeur
+      }, [idsel]);
+      
+>>>>>>> 31ebf6139ea233d78a932b900880f04887962ad3
      /*Transférer données vers Sortie*/
           const handleUpdate=()=>{
             toggleModal2();
@@ -116,8 +129,10 @@ function Entree({numero}) {
             axios.put(`http://192.168.100.48:3003/updateEtat/${selectid}`)
             axios.put(`http://192.168.100.48:3003/deleteSortie/${selectid}`)
             .catch(err=>console.log(err))
-
-            
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 31ebf6139ea233d78a932b900880f04887962ad3
           }
 
       /*Search*/
@@ -226,6 +241,8 @@ function Entree({numero}) {
                             <td> <button className='btn-sortir' onClick=
                            {toggleModal2} >Sortir</button> 
                             </td>
+                        </tr>   
+                      ))}
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
@@ -238,7 +255,7 @@ function Entree({numero}) {
                                               <label>Numéro du responsable de sortie</label>
                                               <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                               <div className='btn-div-modal'>
-                                              <button className='btn-modal' type='submit' onClick={() => { handleUpdate(val.id_ent); }}>Ajouter</button>
+                                              <button className='btn-modal' type='submit' onClick={handleUpdate}>Ajouter</button>
                                               <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                               </div>
                                            </form>
@@ -246,8 +263,6 @@ function Entree({numero}) {
                                     </div>
                                   </div>
                               )}
-                        </tr>   
-                      ))}
                     </tbody>
                   </table>
                )}
@@ -273,7 +288,9 @@ function Entree({numero}) {
                               <td>
                                 <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>  
                               </td>
-            
+                            </tr>     
+                         ))}
+                                     
                               {/*Modal Sortie*/}
                               {modal2 &&(
                                 <div className='modal'>
