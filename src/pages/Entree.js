@@ -31,6 +31,8 @@ function Entree({numero}) {
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
 
+  const [idsel,setIdsel]=useState('');
+
   /*Recuperer la date d'entrée*/
           useEffect( ()=>{
             const intervalId= setInterval(()=>{
@@ -82,7 +84,6 @@ function Entree({numero}) {
           },[]);    
    
       /*Trigger*/
-
       const darkModeRef = useRef(null);
 
       const triggerNotificationInDarkmode = () => {
@@ -115,6 +116,8 @@ function Entree({numero}) {
             axios.put(`http://192.168.100.48:3003/updateEtat/${selectid}`)
             axios.put(`http://192.168.100.48:3003/deleteSortie/${selectid}`)
             .catch(err=>console.log(err))
+
+            
           }
 
       /*Search*/
@@ -220,12 +223,9 @@ function Entree({numero}) {
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                             <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                             <td className='td-responsable'>{val.firstname}   {val.lastname}</td>
-    {/*Eto lay tsy mety  triggerNotificationInDarkmode();
-    */  }<td> <button className='btn-sortir' onClick=
+                            <td> <button className='btn-sortir' onClick=
                            {toggleModal2} >Sortir</button> 
                             </td>
-                        </tr>   
-                      ))}
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
@@ -238,7 +238,7 @@ function Entree({numero}) {
                                               <label>Numéro du responsable de sortie</label>
                                               <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                               <div className='btn-div-modal'>
-                                              <button className='btn-modal' type='submit' onClick={handleUpdate}>Ajouter</button>
+                                              <button className='btn-modal' type='submit' onClick={() => { handleUpdate(val.id_ent); }}>Ajouter</button>
                                               <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                               </div>
                                            </form>
@@ -246,6 +246,8 @@ function Entree({numero}) {
                                     </div>
                                   </div>
                               )}
+                        </tr>   
+                      ))}
                     </tbody>
                   </table>
                )}
@@ -271,9 +273,7 @@ function Entree({numero}) {
                               <td>
                                 <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>  
                               </td>
-                            </tr>     
-                         ))}
-                                     
+            
                               {/*Modal Sortie*/}
                               {modal2 &&(
                                 <div className='modal'>
