@@ -91,20 +91,30 @@ function Entree({numero}) {
         }
       }
       
+      const [selectid, setSelectid] = useState("");
+      const handleRowClick = (id) => {
+        console.log(`Ligne cliquée avec ID : ${id}`);
+        setSelectid(id); // Mettez à jour l'état avec le nouvel ID
+      };
+      
+      // Utilisez useEffect pour observer les changements de selectid
+      useEffect(() => {
+        console.log(selectid); // Ici, selectid aura la nouvelle valeur
+      }, [selectid]);
+   
      /*Transférer données vers Sortie*/
-          const handleUpdate=(idsel)=>{
+          const handleUpdate=()=>{
             toggleModal2();
             triggerNotificationInDarkmode ();
-            axios.post(`http://192.168.100.48:3003/insertSortie/${idsel}`)
-            axios.put(`http://192.168.100.48:3003/updateHeure/${idsel}`,{heure_sort:currentDate2})
-            axios.put(`http://192.168.100.48:3003/updateResponsable/${idsel}`,{uid:uid})
-            axios.put(`http://192.168.100.48:3003/updateSec/${idsel}`)
-            axios.put(`http://192.168.100.48:3003/updateSec2/${idsel}`)
-            axios.put(`http://192.168.100.48:3003/updateEtat/${idsel}`)
-            axios.put(`http://192.168.100.48:3003/deleteSortie/${idsel}`)
+            console.log(selectid)
+            axios.post(`http://192.168.100.48:3003/insertSortie/${selectid}`)
+            axios.put(`http://192.168.100.48:3003/updateHeure/${selectid}`,{heure_sort:currentDate2})
+            axios.put(`http://192.168.100.48:3003/updateResponsable/${selectid}`,{uid:uid})
+            axios.put(`http://192.168.100.48:3003/updateSec/${selectid}`)
+            axios.put(`http://192.168.100.48:3003/updateSec2/${selectid}`)
+            axios.put(`http://192.168.100.48:3003/updateEtat/${selectid}`)
+            axios.put(`http://192.168.100.48:3003/deleteSortie/${selectid}`)
             .catch(err=>console.log(err))
-
-            
           }
 
       /*Search*/
@@ -130,7 +140,7 @@ function Entree({numero}) {
            /*   window.location.reload();*/
           }
 
-       
+      
   return (
     <>
 
@@ -192,7 +202,7 @@ function Entree({numero}) {
               {search&&(
                   <table >
                     <thead>
-                      <tr>
+                      <tr >
                       <th>Id du matériel</th>
                       <th>Nom du matériel</th>
                       <th>Date d'entrée</th>
@@ -204,7 +214,7 @@ function Entree({numero}) {
                     <tbody>
                       {list.map((val)=>(
                         
-                          <tr onClick={handleRowClick}>
+                          <tr key={val.id_ent} onClick={() => handleRowClick(val.id_ent)}>
                              <td>{val.id_ent}</td>
                             <td>{val.nom_ent}</td>  
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
@@ -214,6 +224,8 @@ function Entree({numero}) {
     */  }<td> <button className='btn-sortir' onClick=
                            {toggleModal2} >Sortir</button> 
                             </td>
+                        </tr>   
+                      ))}
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
@@ -226,7 +238,7 @@ function Entree({numero}) {
                                               <label>Numéro du responsable de sortie</label>
                                               <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                               <div className='btn-div-modal'>
-                                              <button className='btn-modal' type='submit' onClick={() => { handleUpdate(val.id_ent); }}>Ajouter</button>
+                                              <button className='btn-modal' type='submit' onClick={handleUpdate}>Ajouter</button>
                                               <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                               </div>
                                            </form>
@@ -234,8 +246,6 @@ function Entree({numero}) {
                                     </div>
                                   </div>
                               )}
-                        </tr>   
-                      ))}
                     </tbody>
                   </table>
                )}
@@ -253,7 +263,7 @@ function Entree({numero}) {
                       <tbody>
                           {searchlist.map((val)=>(
                             
-                              <tr >
+                              <tr key={val.id_ent} onClick={() => handleRowClick(val.id_ent)}>
                               <td>{val.nom_ent}</td>
                               <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                               <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
@@ -261,7 +271,9 @@ function Entree({numero}) {
                               <td>
                                 <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>  
                               </td>
-            
+                            </tr>     
+                         ))}
+                                     
                               {/*Modal Sortie*/}
                               {modal2 &&(
                                 <div className='modal'>
@@ -274,7 +286,7 @@ function Entree({numero}) {
                                           <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                           <div className='btn-div-modal'>
                                           <button className='btn-modal' type='submit' onClick={() => {
-                                            handleUpdate(val.id_ent);  }}>Ajouter</button>
+                                            handleUpdate();  }}>Ajouter</button>
                                           <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                           </div>                           
                                       </form>
@@ -282,8 +294,6 @@ function Entree({numero}) {
                                 </div>
                               </div>
                               )}
-                            </tr>     
-                         ))}
                       </tbody>
                   </table>
                   )}
