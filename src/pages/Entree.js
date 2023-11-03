@@ -31,6 +31,8 @@ function Entree({numero}) {
   const [modal,setModal]=useState(false);
   const [modal2,setModal2]=useState(false);
 
+  const [idsel,setIdsel]=useState('');
+
   /*Recuperer la date d'entrée*/
           useEffect( ()=>{
             const intervalId= setInterval(()=>{
@@ -82,7 +84,6 @@ function Entree({numero}) {
           },[]);    
    
       /*Trigger*/
-
       const darkModeRef = useRef(null);
 
       const triggerNotificationInDarkmode = () => {
@@ -91,8 +92,19 @@ function Entree({numero}) {
         }
       }
       
+      /*Id cliquée*/
+      const handleRowClick = (id) => {
+        console.log(`Ligne cliquée avec ID : ${id}`);
+        setIdsel(id); // Mettez à jour l'état avec le nouvel ID
+      };
+      
+      // Utilisez useEffect pour observer les changements de selectid
+      useEffect(() => {
+        console.log(idsel); // Ici, selectid aura la nouvelle valeur
+      }, [idsel]);
+      
      /*Transférer données vers Sortie*/
-          const handleUpdate=(idsel)=>{
+          const handleUpdate=()=>{
             toggleModal2();
             triggerNotificationInDarkmode ();
             axios.post(`http://192.168.100.48:3003/insertSortie/${idsel}`)
@@ -103,8 +115,7 @@ function Entree({numero}) {
             axios.put(`http://192.168.100.48:3003/updateEtat/${idsel}`)
             axios.put(`http://192.168.100.48:3003/deleteSortie/${idsel}`)
             .catch(err=>console.log(err))
-
-            
+        
           }
 
       /*Search*/
@@ -203,38 +214,38 @@ function Entree({numero}) {
                     <tbody>
                       {list.map((val)=>(
                         
-                          <tr >
+                          <tr key={val.id_ent} onClick={() => handleRowClick(val.id_ent)}>
                              <td>{val.id_ent}</td>
                             <td>{val.nom_ent}</td>  
                             <td>{format(new Date(val.heure_ent),'dd-MM-yyyy')}</td>
                             <td>{format(new Date(val.heure_ent),'HH:mm')}</td>
                             <td className='td-responsable'>{val.firstname}   {val.lastname}</td>
-    {/*Eto lay tsy mety  triggerNotificationInDarkmode();
-    */  }<td> <button className='btn-sortir' onClick=
+                            <td> <button className='btn-sortir' onClick=
                            {toggleModal2} >Sortir</button> 
                             </td>
+                        </tr> 
+                         
+                      ))}
 
                             {/*Modal Sortie*/}
                             {modal2 &&(
-                                <div className='modal'>
-                                  <div className='overlay' onClick={toggleModal2}></div>
-                                     <div className='modal-content modal-content2'>
-                                        <div className='form-add'>
-                                            <h2>Informations sur la sortie</h2>
-                                            <form onSubmit={handleSubmit}>
-                                              <label>Numéro du responsable de sortie</label>
-                                              <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
-                                              <div className='btn-div-modal'>
-                                              <button className='btn-modal' type='submit' onClick={() => { handleUpdate(val.id_ent); }}>Ajouter</button>
-                                              <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
-                                              </div>
-                                           </form>
-                                        </div> 
-                                    </div>
+                              <div className='modal'>
+                                <div className='overlay' onClick={toggleModal2}></div>
+                                   <div className='modal-content modal-content2'>
+                                      <div className='form-add'>
+                                          <h2>Informations sur la sortie</h2>
+                                          <form onSubmit={handleSubmit}>
+                                            <label>Numéro du responsable de sortie</label>
+                                            <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
+                                            <div className='btn-div-modal'>
+                                            <button className='btn-modal' type='submit' onClick={() => { handleUpdate(); }}>Ajouter</button>
+                                            <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
+                                            </div>
+                                         </form>
+                                      </div> 
                                   </div>
-                              )}
-                        </tr>   
-                      ))}
+                                </div>
+                            )} 
                     </tbody>
                   </table>
                )}
@@ -260,9 +271,10 @@ function Entree({numero}) {
                               <td>
                                 <button className='btn-sortir' onClick={toggleModal2} >Sortir</button>  
                               </td>
-            
-                              {/*Modal Sortie*/}
-                              {modal2 &&(
+                            </tr>     
+                         ))}
+                         {/*Modal Sortie*/}
+                             {modal2 &&(
                                 <div className='modal'>
                                   <div className='overlay' onClick={toggleModal2}></div>
                                     <div className='modal-content modal-content2'>
@@ -273,7 +285,7 @@ function Entree({numero}) {
                                           <input type='text' onChange={(event)=>{setUid(event.target.value)}}/>
                                           <div className='btn-div-modal'>
                                           <button className='btn-modal' type='submit' onClick={() => {
-                                            handleUpdate(val.id_ent);  }}>Ajouter</button>
+                                            handleUpdate();  }}>Ajouter</button>
                                           <button className='btn-modal' onClick={toggleModal2}>Fermer</button>
                                           </div>                           
                                       </form>
@@ -281,8 +293,6 @@ function Entree({numero}) {
                                 </div>
                               </div>
                               )}
-                            </tr>     
-                         ))}
                       </tbody>
                   </table>
                   )}
